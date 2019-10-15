@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watchPathIgnorePatterns /node_modules/ --watchAll",
     "build": "webpack",
     "dev": "webpack-dev-server"
   },
