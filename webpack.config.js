@@ -1,4 +1,5 @@
 // webpack.config.js
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 module.exports = {
@@ -14,8 +15,13 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          // Creates `style` nodes from JS strings
-          'style-loader',
+          // Use minicssextract instead of style loader
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === 'development',
+            },
+          },
           // Translates CSS into CommonJS
           'css-loader',
           // Compiles Sass to CSS
@@ -36,6 +42,16 @@ module.exports = {
       },
     ],
   },
+
+  plugins: [
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // all options are optional
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+      ignoreOrder: false, // Enable to remove warnings about conflicting order
+    }),
+  ],
 
   // webpack-dev-server config
   devServer: {

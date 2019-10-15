@@ -2,11 +2,13 @@
   "name": "getitdonejs",
   "version": "1.0.0",
   "description": "1. [ ] 1. Your ‘todos’ are going to be objects that you’ll want to dynamically create, which means either using factories or constructors/classes to generate them.",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack",
+    "dev": "webpack-dev-server"
   },
-  "author": "",
+  "author": "Konnor Rogers",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.6.4",
@@ -23,7 +25,6 @@
     "node-sass": "^4.12.0",
     "regenerator-runtime": "^0.13.3",
     "sass-loader": "^8.0.0",
-    "style-loader": "^1.0.0",
     "webpack": "^4.41.1",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.2"
