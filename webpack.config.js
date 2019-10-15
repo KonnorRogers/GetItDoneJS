@@ -10,7 +10,6 @@ module.exports = {
 
   devServer: {
     open: true,
-    publicPath: '',
     contentBase: path.resolve(__dirname, 'dist'),
     watchContentBase: true,
     compress: true,
