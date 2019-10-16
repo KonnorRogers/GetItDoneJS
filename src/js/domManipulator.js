@@ -1,5 +1,14 @@
+/**
+ * Dom manipulations IE: rendering the page, creating elements, etc
+ */
 export default (function DomManipulator() {
-  const renderElement = (props = {}) => {
+  /**
+   * Create an element with the given properties
+   * @param props {Object} Must define a type property otherwise it will return
+   *    null
+   * @return {HTMLElement} Returns an HTMLelement as defined by props.type
+   */
+  const createElement = (props = {}) => {
     const object = Object.assign({}, props);
 
     // If no type is defined, return null
@@ -20,6 +29,6 @@ export default (function DomManipulator() {
   };
 
   return {
-    renderElement,
+    createElement,
   };
 })();
