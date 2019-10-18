@@ -3,10 +3,12 @@
  */
 export default (function DomManipulator() {
   /**
-   * Create an element with the given properties
-   * @param props {Object} Must define a type property otherwise it will return
-   *    null
-   * @return {HTMLElement} Returns an HTMLelement as defined by props.type
+   * Creates an element with the given properties
+   * @param {Object} props - Properties of the element you're creating. Properties
+   *    should be valid HTML properties for the given {props.type} of the element created
+   * @param {string} props.type - What kind of element to create. IE: 'div'. Under the hood
+   *    it will run `document.createElement(`${props.type}`);`
+   * @return {HTMLElement} - Returns an HTMLelement as defined by props.type
    */
   const createElement = (props = {}) => {
     const object = Object.assign({}, props);
@@ -18,12 +20,8 @@ export default (function DomManipulator() {
 
     const element = document.createElement(`${object.type}`);
 
-    // Assigns properties to the element
-    // IE: props.onclick = () => function
-    // Will then be applied to the element
-    for (const [key, value] of Object.entries(object)) {
-      element[`${key}`] = value;
-    }
+    // Assigns properties of the created object onto the given element
+    Object.assign(element, object);
 
     return element;
   };
