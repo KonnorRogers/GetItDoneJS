@@ -10,6 +10,7 @@ describe('Item()', () => {
       notes: [],
       labels: [],
       finished: false,
+      priority: 0,
     };
 
     expect(typeof Item()).toBe('object');

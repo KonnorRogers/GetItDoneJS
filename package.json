@@ -1,7 +1,7 @@
 {
   "name": "getitdonejs",
   "version": "1.0.0",
-  "description": "1. [ ] 1. Your ‘todos’ are going to be objects that you’ll want to dynamically create, which means either using factories or constructors/classes to generate them.",
+  "description": "todo list application written in vanilla javascript",
   "private": true,
   "scripts": {
     "test": "jest",

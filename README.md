@@ -1,6 +1,8 @@
 # Purpose
 
 A TODO list application written in vanilla Javascript. <br>
+Bundling via Webpack.<br>
+CSS via preprocessor - SASS <br>
 Documentation via jsdoc. <br>
 Testing via Jest.<br>
 
@@ -10,6 +12,18 @@ Testing via Jest.<br>
 git clone https://github.com/paramagicdev/GetItDoneJS
 cd GetItDoneJS
 yarn install
+```
+
+## Local development
+
+```bash
+yarn dev
+```
+
+## Production build
+
+```bash
+yarn build
 ```
 
 ## Running test suite
