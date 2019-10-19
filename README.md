@@ -1,6 +1,30 @@
 # Purpose
 
-A TODO list application written in javascript. Documentation via jsdoc.
+A TODO list application written in vanilla Javascript. <br>
+Documentation via jsdoc. <br>
+Testing via Jest.<br>
+
+## Getting started
+
+```bash
+git clone https://github.com/paramagicdev/GetItDoneJS
+cd GetItDoneJS
+yarn install
+```
+
+## Running test suite
+
+### One time run
+
+```bash
+yarn test
+```
+
+### Watch for changes
+
+```bash
+yarn test:watch
+```
 
 ## Checklist
 
