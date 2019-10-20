@@ -14,13 +14,13 @@ cd GetItDoneJS
 yarn install
 ```
 
-## Local development
+### Local development
 
 ```bash
 yarn dev
 ```
 
-## Production build
+### Production build
 
 ```bash
 yarn build
@@ -42,16 +42,16 @@ yarn test:watch
 
 ## Checklist
 
-- [ ] Your ‘todos’ are going to be objects that you’ll want to dynamically create, which means either using factories or constructors/classes to generate them.
+- [x] Your ‘todos’ are going to be objects that you’ll want to dynamically create, which means either using factories or constructors/classes to generate them.
       <br><br>
 
-- [ ] Brainstorm what kind of properties your todo-items are going to have. At a minimum they should have a title, description, dueDate and priority. You might also want to include notes or even a checklist.
+- [x] Brainstorm what kind of properties your todo-items are going to have. At a minimum they should have a title, description, dueDate and priority. You might also want to include notes or even a checklist.
       <br><br>
 
-- [ ] Your todo list should have projects or separate lists of todos. When a user first opens the app, there should be some sort of ‘default’ project to which all of their todos are put. Users should be able to create new projects and choose which project their todos go into.
+- [x] Your todo list should have projects or separate lists of todos. When a user first opens the app, there should be some sort of ‘default’ project to which all of their todos are put. Users should be able to create new projects and choose which project their todos go into.
       <br><br>
 
-- [ ] You should separate your application logic (i.e. creating new todos, setting todos as complete, changing todo priority etc.) from the DOM-related stuff, so keep all of those things in separate modules.
+- [x] You should separate your application logic (i.e. creating new todos, setting todos as complete, changing todo priority etc.) from the DOM-related stuff, so keep all of those things in separate modules.
       <br><br>
 
 - The look of the User Interface is up to you, but it should be able to do the following:
