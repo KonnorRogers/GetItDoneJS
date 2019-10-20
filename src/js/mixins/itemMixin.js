@@ -10,14 +10,17 @@ import {withNotes} from './itemMixins/withNotes.js';
 import {withTitle} from './itemMixins/withTitle.js';
 
 export default (props = {}) => obj => {
-  return pipe(
-    withDescription({description: props.description}),
-    withFinished({finished: props.finished}),
-    withPriority({priority: props.priority}),
-    withLabels({labels: props.labels}),
-    withStartDate({startDate: props.startDate}),
-    withEndDate({endDate: props.endDate}),
-    withNotes({notes: props.notes}),
-    withTitle({title: props.title}),
-  )({});
+  return Object.assign(
+    obj,
+    pipe(
+      withDescription({description: props.description}),
+      withFinished({finished: props.finished}),
+      withPriority({priority: props.priority}),
+      withLabels({labels: props.labels}),
+      withStartDate({startDate: props.startDate}),
+      withEndDate({endDate: props.endDate}),
+      withNotes({notes: props.notes}),
+      withTitle({title: props.title}),
+    )({}),
+  );
 };

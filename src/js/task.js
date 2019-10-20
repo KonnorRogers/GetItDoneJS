@@ -8,5 +8,5 @@ export default function Task(props = {}) {
   const _isTask = true;
   const isTask = () => _isTask;
 
-  return Object.assign(pipe(ItemMixin(props))({}), {isTask});
+  return pipe(ItemMixin(props))({isTask});
 }

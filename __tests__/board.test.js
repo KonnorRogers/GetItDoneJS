@@ -11,7 +11,7 @@ describe('Board()', () => {
       projects: ['project1', 'project2'],
     };
 
-    props.projects.forEach(project => Board.addProject(project));
+    props.projects.forEach(project => Board.addProjects(project));
     expect(Board.getProjects()).toStrictEqual(props.projects);
   });
 });

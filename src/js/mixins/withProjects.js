@@ -1,10 +1,11 @@
 export const withProjects = (projects = []) => obj => {
-  const addProject = project => projects.push(project);
+  const addProjects = (...newProjects) =>
+    newProjects.flat().map(project => projects.push(project));
   const getProjects = () => projects;
 
   return {
     ...obj,
-    addProject,
+    addProjects,
     getProjects,
   };
 };
