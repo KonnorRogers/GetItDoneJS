@@ -1,26 +1,16 @@
-/**
- * The default board where projects and tasks will be displayed
- * @return {Object} - Returns the board object which contains various projects, tasks, etc
- */
-export default (function Board(props = {}) {
-  const _projects = props.projects || [];
-  const _tasks = props.tasks || [];
+import {pipe} from './utils/pipe.js';
+import {withProjects} from './mixins/withProjects';
+import {withTasks} from './mixins/withTasks';
 
-  const _items = () => _projects.concat(_tasks);
+export default ((props = {}) => {
+  const _isBoard = true;
+  const isBoard = () => _isBoard;
 
-  const addProject = project => {
-    _projects.push(project);
-  };
-
-  const addTask = task => {
-    _tasks.push(task);
-  };
-
-  return {
-    addTask,
-    addProject,
-    projects: _projects,
-    tasks: _tasks,
-    items: _items,
-  };
+  return Object.assign(
+    pipe(
+      withProjects({projects: props.projects}),
+      withTasks({tasks: props.tasks}),
+    ),
+    {isBoard},
+  );
 })();

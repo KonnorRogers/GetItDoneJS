@@ -1,21 +1,12 @@
-import Item from './item.js';
+import {pipe} from './utils/pipe.js';
+import ItemMixin from './mixins/itemMixin.js';
 
-/**
- * A Task factory function, will import default properties from Item
- * @see {@link Item}
- * @see Item
- * @param {Object} props - Properties of the Task
- * @return {Object} Returns an object with the given properties
- */
+// export default function Task(props = {}) {
+// export default (props = {}) => pipe(ItemMixin(props))({});
+
 export default function Task(props = {}) {
   const _isTask = true;
+  const isTask = () => _isTask;
 
-  return Object.assign(
-    {},
-    Item(),
-    {
-      isTask: () => _isTask,
-    },
-    props,
-  );
+  return Object.assign(pipe(ItemMixin(props))({}), {isTask});
 }

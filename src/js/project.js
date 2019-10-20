@@ -1,25 +1,15 @@
-import Item from './item.js';
-import hasTasks from './mixins/hasTasks.js';
+import {pipe} from './utils/pipe.js';
+import {withTasks} from './mixins/withTasks.js';
+import ItemMixin from './mixins/itemMixin.js';
 
-/**
- * A Project factory function, will import default properties from Item
- * @see {@link Item}
- * @see Item
- * @param {Object} props - Properties of the Project
- * @param {Task[]} [props.tasks = []] props.tasks - List of tasks for a given project
- * @return {Object} Returns an object with the given properties
- */
-
-export default function Project(props = {}) {
+export default (props = {}) => {
   const _isProject = true;
-
+  const isProject = () => _isProject;
   return Object.assign(
-    {},
-    Item(),
-    hasTasks({tasks: props.tasks}),
-    {
-      isProject: () => _isProject,
-    },
-    props,
+    pipe(
+      ItemMixin(props),
+      withTasks({tasks: props.tasks}),
+    )({}),
+    {isProject},
   );
-}
+};
