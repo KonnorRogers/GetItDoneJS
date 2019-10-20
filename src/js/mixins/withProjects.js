@@ -1,4 +1,4 @@
-export const withProjects = ({projects = []}) => obj => {
+export const withProjects = (projects = []) => obj => {
   const addProject = project => projects.push(project);
   const getProjects = () => projects;
 

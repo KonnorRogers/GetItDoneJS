@@ -5,6 +5,7 @@ import ItemMixin from './mixins/itemMixin.js';
 export default (props = {}) => {
   const _isProject = true;
   const isProject = () => _isProject;
+
   return Object.assign(
     pipe(
       ItemMixin(props),
