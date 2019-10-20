@@ -1,13 +1,13 @@
 import {pipe} from '../utils/pipe.js';
 
-import {withDescription} from './withDescription.js';
-import {withFinished} from './withFinished.js';
-import {withPriority} from './withPriority.js';
-import {withLabels} from './withLabels.js';
-import {withStartDate} from './withStartDate.js';
-import {withEndDate} from './withEndDate.js';
-import {withNotes} from './withNotes.js';
-import {withTitle} from './withTitle.js';
+import {withDescription} from './itemMixins/withDescription.js';
+import {withFinished} from './itemMixins/withFinished.js';
+import {withPriority} from './itemMixins/withPriority.js';
+import {withLabels} from './itemMixins/withLabels.js';
+import {withStartDate} from './itemMixins/withStartDate.js';
+import {withEndDate} from './itemMixins/withEndDate.js';
+import {withNotes} from './itemMixins/withNotes.js';
+import {withTitle} from './itemMixins/withTitle.js';
 
 export default (props = {}) => obj => {
   return pipe(
