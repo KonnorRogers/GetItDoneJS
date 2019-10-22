@@ -3,6 +3,9 @@ import {withTasks} from './mixins/withTasks.js';
 import ItemMixin from './mixins/itemMixin.js';
 
 /**
+ * A project which holds tasks and other items from itemMixin
+ * @module
+ *
  * @mixes ItemMixin
  * @see {@link ItemMixin}
  * @mixes withTasks

@@ -6,6 +6,7 @@ import {withTasks} from './mixins/withTasks';
  * The board is where all projects and tasks will sit. Each user has only 1 board.
  * Board holds projects & tasks.
  *
+ * @module Board
  * @mixes withProjects
  * @mixes withTasks
  *
