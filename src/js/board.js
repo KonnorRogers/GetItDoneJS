@@ -6,13 +6,13 @@ import {withTasks} from './mixins/withTasks';
  * The board is where all projects and tasks will sit. Each user has only 1 board.
  * Board holds projects & tasks.
  *
- * @module Board
  * @mixes withProjects
  * @mixes withTasks
- *
- * @typedef Board
- *
  * @return {Object} Returns a Board object
+ * @module Board
+ * @example
+ * import Board from '<path>/<to>/board.js';
+ * Board.isBoard(); // => true
  */
 export default (function Board(props = {}) {
   const _isBoard = true;
@@ -21,7 +21,7 @@ export default (function Board(props = {}) {
    * Checks if the object is a Board object
    * @return {boolean}
    */
-  const isBoard = () => _isBoard;
+  const isBoard = obj => _isBoard;
 
   return pipe(
     withProjects({projects: props.projects}),
