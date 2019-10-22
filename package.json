@@ -7,7 +7,8 @@
     "test": "jest",
     "test:watch": "jest --watchPathIgnorePatterns /node_modules/ --watchAll",
     "build": "webpack",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "doc": "jsdoc -r ./src/js -d ./doc"
   },
   "author": "Konnor Rogers",
   "license": "ISC",
