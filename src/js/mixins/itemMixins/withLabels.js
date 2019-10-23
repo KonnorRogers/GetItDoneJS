@@ -1,9 +1,11 @@
 /**
  * This provides utility functions for labels.
- * @param {string[]} [[]] object.labels - Label(s) to add to an object. Labels are simply strings
+ * @param {Object} [props = {}] - Properties to read from
+ * @param {string[]} [props.labels = []]  - Label(s) to add to an object. Should be an {Array} of {strings}
  * @param {Object} obj - The object to append the methods onto
  * @return {Object} Returns an {Object} with methods appended.
- * @mixin
+ * @category Mixins/ItemMixins
+ * @module
  */
 export const withLabels = ({labels = []} = {}) => obj => {
   const getLabels = () => labels;

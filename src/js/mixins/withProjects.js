@@ -2,7 +2,8 @@
  * This provides utility functions for projects.
  * @param {Project[]} [[]] object.projects - Project(s) to add to an object.
  * @return {Object} Returns an {Object} with methods appended.
- * @mixin
+ * @module
+ * @category Mixins
  */
 export const withProjects = ({projects = []} = {}) => obj => {
   /**

@@ -2,7 +2,8 @@
  * This provides utility functions for tasks.
  * @param {Object} obj - The object to append the methods onto
  * @return {Object} Returns an {Object} with methods appended.
- * @mixin
+ * @module
+ * @category Mixins
  */
 export const withTasks = ({tasks = []} = {}) => obj => {
   /**

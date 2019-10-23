@@ -8,11 +8,11 @@
  *   to pipe functions onto.
  *
  * @example
- *   const createDrone = ({capacity = '3000mAh'}) => pipe(
- *       withFlying,
- *       withBattery({capacity}),
- *       withConstructor(createDrone)
- *     )({});
+ * const createDrone = ({capacity = '3000mAh'}) => pipe(
+ *     withFlying,
+ *     withBattery({capacity}),
+ *     withConstructor(createDrone)
+ *   )({});
  *
  * @see {@link https://medium.com/javascript-scene/javascript-factory-functions-with-es6-4d224591a8b1#ca97|pipe function}
  * @see {@link ItemMixin} for further usage

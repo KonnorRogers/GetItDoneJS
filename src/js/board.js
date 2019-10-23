@@ -9,7 +9,6 @@ import {withTasks} from './mixins/withTasks';
  * @mixes withProjects
  * @mixes withTasks
  * @return {Object} Returns a Board object
- * @module Board
  * @example
  * import Board from '<path>/<to>/board.js';
  * Board.isBoard(); // => true
