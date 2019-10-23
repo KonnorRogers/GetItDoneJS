@@ -4,7 +4,7 @@
  * @return {Object} Returns an {Object} with methods appended.
  * @mixin
  */
-export const withProjects = ({projects = []}) => obj => {
+export const withProjects = ({projects = []} = {}) => obj => {
   /**
    * Add newProject onto the current tasks
    * @param {Project|Project[]} newProjects - Task(s) to add to the current tasks array

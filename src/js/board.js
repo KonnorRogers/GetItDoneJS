@@ -24,7 +24,7 @@ export default (function Board(props = {}) {
   const isBoard = obj => _isBoard;
 
   return pipe(
-    withProjects({projects: props.projects}),
-    withTasks({tasks: props.tasks}),
+    withProjects(props),
+    withTasks(props),
   )({isBoard});
 })();

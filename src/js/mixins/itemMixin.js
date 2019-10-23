@@ -13,7 +13,7 @@ import {withTitle} from './itemMixins/withTitle.js';
  * The default item mixin. It provides all the functionality for both Projects and Tasks.
  * This is not meant to be used directly
  *
- * @param {Object} [{}] props- Properties of the item, IE: description, finished, priority etc
+ * @param {Object} [props = {}] - Properties of the item, IE: description, finished, priority etc
  * @return {Object} Returns an object with other mixins piped onto it
  * @mixin ItemMixin
  */
@@ -21,14 +21,14 @@ export default (props = {}) => obj => {
   return Object.assign(
     obj,
     pipe(
-      withDescription({description: props.description}),
-      withFinished({finished: props.finished}),
-      withPriority({priority: props.priority}),
-      withLabels({labels: props.labels}),
-      withStartDate({startDate: props.startDate}),
-      withEndDate({endDate: props.endDate}),
-      withNotes({notes: props.notes}),
-      withTitle({title: props.title}),
+      withDescription(props),
+      withFinished(props),
+      withPriority(props),
+      withLabels(props),
+      withStartDate(props),
+      withEndDate(props),
+      withNotes(props),
+      withTitle(props),
     )({}),
   );
 };

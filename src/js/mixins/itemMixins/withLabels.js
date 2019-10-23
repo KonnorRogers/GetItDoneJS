@@ -5,7 +5,7 @@
  * @return {Object} Returns an {Object} with methods appended.
  * @mixin
  */
-export const withLabels = ({labels = []}) => obj => {
+export const withLabels = ({labels = []} = {}) => obj => {
   const getLabels = () => labels;
   const addLabels = (...newLabels) =>
     newLabels.flat().map(label => labels.push(label));

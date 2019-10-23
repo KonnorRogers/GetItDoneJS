@@ -2,12 +2,12 @@ import {withFinished} from '../../../src/js/mixins/itemMixins/withFinished.js';
 
 describe('withFinished()', () => {
   test('Should return an Object', () => {
-    const finishObj = withFinished({})({});
+    const finishObj = withFinished()({});
     expect(typeof finishObj).toBe('object');
   });
 
   test('Should mark as finishObj and unfinished as appropriate', () => {
-    const finishObj = withFinished({})({});
+    const finishObj = withFinished()({});
 
     expect(finishObj.isFinished()).toBe(false);
     expect(finishObj.isIncomplete()).toBe(true);

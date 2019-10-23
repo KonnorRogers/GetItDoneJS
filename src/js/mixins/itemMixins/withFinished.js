@@ -1,4 +1,4 @@
-export const withFinished = ({finished = false}) => obj => {
+export const withFinished = ({finished = false} = {}) => obj => {
   const isFinished = () => finished;
   const isIncomplete = () => !finished;
   const finish = () => (finished = true);

@@ -4,7 +4,7 @@
  * @return {Object} Returns an {Object} with methods appended.
  * @mixin
  */
-export const withTasks = ({tasks = []}) => obj => {
+export const withTasks = ({tasks = []} = {}) => obj => {
   /**
    * Add newTasks onto the current tasks
    * @param {Task|Task[]} Task(s) to add to the current tasks array

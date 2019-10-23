@@ -2,12 +2,12 @@ import {withEndDate} from '../../../src/js/mixins/itemMixins/withEndDate.js';
 
 describe('withEndDate()', () => {
   test('Should return an Object', () => {
-    const endDate = withEndDate({})({});
+    const endDate = withEndDate()({});
     expect(typeof endDate).toBe('object');
   });
 
   test('Should set and get the endDate appropriately', () => {
-    const endDate = withEndDate({})({});
+    const endDate = withEndDate()({});
 
     expect(endDate.getEndDate()).toBe(null);
 

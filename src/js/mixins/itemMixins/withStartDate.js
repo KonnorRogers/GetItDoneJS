@@ -5,7 +5,7 @@
  * @return {Object} Returns an {Object} with methods appended.
  * @mixin
  */
-export const withStartDate = ({startDate = null}) => obj => {
+export const withStartDate = ({startDate = null} = {}) => obj => {
   const getStartDate = () => startDate;
   const setStartDate = newStartDate => (startDate = newStartDate);
 

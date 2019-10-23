@@ -2,12 +2,12 @@ import {withDescription} from '../../../src/js/mixins/itemMixins/withDescription
 
 describe('withDescription()', () => {
   test('Should return an Object', () => {
-    const description = withDescription({})({});
+    const description = withDescription()({});
     expect(typeof description).toBe('object');
   });
 
   test('Should set and get the description appropriately', () => {
-    const description = withDescription({})({});
+    const description = withDescription()({});
 
     expect(description.getDescription()).toBe('');
 

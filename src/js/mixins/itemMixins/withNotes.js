@@ -5,7 +5,7 @@
  * @return {Object} Returns an {Object} with methods appended.
  * @mixin
  */
-export const withNotes = ({notes = []}) => obj => {
+export const withNotes = ({notes = []} = {}) => obj => {
   const getNotes = () => notes;
   const addNote = note => notes.push(note);
   return {
