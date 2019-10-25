@@ -1,23 +1,14 @@
-/**
- * This provides utility functions for tasks.
- * @param {Object} obj - The object to append the methods onto
- * @return {Object} Returns an {Object} with methods appended.
- * @module
- * @category Mixins
- */
-export const withTasks = ({tasks = []} = {}) => obj => {
-  /**
-   * Add newTasks onto the current tasks
-   * @param {Task|Task[]} Task(s) to add to the current tasks array
-   * @return {Task[]} Returns the task(s) passed into the params as an array
-   */
-  const addTasks = (...newTasks) =>
-    newTasks.flat().map(task => tasks.push(task));
+import {addToArray} from '../utils/addToArray.js';
 
-  /**
-   * @return {Task[]} Return an array of tasks of the object
-   */
-  const getTasks = () => tasks;
+export const withTasks = (tasks = []) => obj => {
+  let _tasks = tasks;
+
+  const addTasks = (...newTasks) => {
+    _tasks = addToArray(_tasks, newTasks.flat());
+    return _tasks;
+  };
+
+  const getTasks = () => _tasks;
 
   return {
     ...obj,
