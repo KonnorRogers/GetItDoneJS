@@ -8,4 +8,5 @@ const root = {
 };
 
 const rootElem = domManipulator.createElement('div', root);
-document.body.appendChild(rootElem);
+
+domManipulator.renderPage(rootElem);

@@ -17,7 +17,12 @@ export default (function DomManipulator() {
     return element;
   };
 
+  const renderPage => (rootElement) {
+    document.body.appendChild(rootElement);
+  }
+
   return {
     createElement,
+    renderPage,
   };
 })();
