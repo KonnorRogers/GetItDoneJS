@@ -1,12 +1,11 @@
 import DomManipulator from '../utils/domManipulator.js';
 
-export const Board = (props = {}) => {
+export const Container = (props = {}) => {
   const render = () => {
-    props.id = props.id || 'board';
+    props.className = props.className || 'container';
     props.element = props.element || 'div';
 
     return DomManipulator.createElement(props.element, props);
   };
-
   return {render};
 };

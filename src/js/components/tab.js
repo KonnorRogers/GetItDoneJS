@@ -1,10 +1,10 @@
 import DomManipulator from '../utils/domManipulator.js';
 
-export const TaskTab = (props = {}) => {
+export const Tab = (props = {}) => {
   const render = () => {
-    props.id = props.id || 'task-tab';
     props.className = props.className || 'tab';
-    return domManipulator.createElement('button', props);
+    props.element = props.element || 'button';
+    return DomManipulator.createElement(props.element, props);
   };
 
   return {render};

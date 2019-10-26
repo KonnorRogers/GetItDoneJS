@@ -17,12 +17,17 @@ export default (function DomManipulator() {
     return element;
   };
 
-  const renderPage = rootElement => {
-    document.body.appendChild(rootElement);
+  const createDocFrag = () => {
+    return document.createDocumentFragment();
+  };
+
+  const appendChildren = (parent, ...children) => {
+    children.flat().forEach(child => parent.appendChild(child));
   };
 
   return {
     createElement,
-    renderPage,
+    createDocFrag,
+    appendChildren,
   };
 })();
