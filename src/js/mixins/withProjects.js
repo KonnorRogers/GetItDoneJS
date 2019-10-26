@@ -1,23 +1,15 @@
-/**
- * This provides utility functions for projects.
- * @param {Project[]} [[]] object.projects - Project(s) to add to an object.
- * @return {Object} Returns an {Object} with methods appended.
- * @module
- * @category Mixins
- */
-export const withProjects = ({projects = []} = {}) => obj => {
-  /**
-   * Add newProject onto the current tasks
-   * @param {Project|Project[]} newProjects - Task(s) to add to the current tasks array
-   * @return {Project[]} Returns the task(s) passed into the params as an array
-   */
-  const addProjects = (...newProjects) =>
-    newProjects.flat().map(project => projects.push(project));
+import {addToArray} from '../utils/addToArray.js';
 
-  /**
-   * @return {Project[]} Return the array of projects
-   */
-  const getProjects = () => projects;
+// Allows an item to implement a projects array
+export const withProjects = (projects = []) => obj => {
+  let _projects = projects;
+
+  const addProjects = (...newProjects) => {
+    _projects = addToArray(_projects, newProjects.flat());
+    return _projects;
+  };
+
+  const getProjects = () => _projects;
 
   return {
     ...obj,

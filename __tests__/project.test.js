@@ -27,6 +27,7 @@ describe('Project()', () => {
   test('Should add an array of tasks', () => {
     const project = Project();
     const tasks = ['task1', 'task2'];
+
     project.addTasks(tasks);
 
     expect(project.getTasks()).toStrictEqual(tasks);

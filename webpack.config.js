@@ -1,4 +1,6 @@
 // webpack.config.js
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
@@ -39,7 +41,7 @@ module.exports = {
       // ES5 transpiling
       {
         test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -51,6 +53,8 @@ module.exports = {
   },
 
   plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({template: './src/index.html'}),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // all options are optional

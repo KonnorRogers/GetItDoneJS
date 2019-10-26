@@ -23,14 +23,14 @@ export default (props = {}) => obj => {
   return Object.assign(
     obj,
     pipe(
-      withDescription(props),
-      withFinished(props),
-      withPriority(props),
-      withLabels(props),
-      withStartDate(props),
-      withEndDate(props),
-      withNotes(props),
-      withTitle(props),
+      withDescription(props.description),
+      withFinished(props.finished),
+      withPriority(props.priority),
+      withLabels(props.labels),
+      withStartDate(props.startDate),
+      withEndDate(props.endDate),
+      withNotes(props.notes),
+      withTitle(props.title),
     )({}),
   );
 };
