@@ -1,4 +1,4 @@
-import {addToArray} from '../utils/addToArray.js';
+import {addToArray} from '../utils/arrayUtils.js';
 
 // Allows an item to implement a projects array
 export const withProjects = (projects = []) => obj => {

@@ -1,4 +1,4 @@
-import {addToArray} from '../../utils/addToArray.js';
+import {addToArray} from '../../utils/arrayUtils.js';
 
 export const withNotes = (notes = []) => obj => {
   let _notes = notes;

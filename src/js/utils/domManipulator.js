@@ -3,31 +3,27 @@
  */
 export default (function DomManipulator() {
   // Creates an  element given certain parameters
-  const createElement = (type, props = {}) => {
-    if (!type) {
+  const createElement = (element, props = {}) => {
+    if (!element) {
       return null;
     }
 
-    const element = document.createElement(type);
-    const object = Object.assign({}, props);
+    const HTMLElement = document.createElement(element);
 
     // Assigns properties of the created object onto the given element
-    Object.assign(element, object);
+    Object.assign(HTMLElement, props);
 
-    return element;
+    return HTMLElement;
   };
 
-  const createDocFrag = () => {
-    return document.createDocumentFragment();
-  };
-
-  const appendChildren = (parent, ...children) => {
+  // This is a curried function. The first item passed in is the parent. If no
+  // Second function passed in, it will return a function which will accept children.
+  const appendChildrenTo = parent => (...children) => {
     children.flat().forEach(child => parent.appendChild(child));
   };
 
   return {
     createElement,
-    createDocFrag,
-    appendChildren,
+    appendChildrenTo,
   };
 })();

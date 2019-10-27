@@ -7,13 +7,13 @@ import {Container} from './js/components/container.js';
 
 const rootElem = Container().render();
 
-const docFrag = DomManipulator.createDocFrag();
+const docFrag = document.createDocumentFragment();
 
 const board = Board().render();
 const tab = Tab().render();
 const checkbox = Checkbox().render();
 
-DomManipulator.appendChildren(docFrag, board, tab, checkbox);
+DomManipulator.appendChildrenTo(docFrag)(board, tab, checkbox);
 
 rootElem.appendChild(docFrag);
 
