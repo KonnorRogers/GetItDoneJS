@@ -1,6 +1,7 @@
 export const withTitle = (title = '') => obj => {
-  const getTitle = () => title;
-  const setTitle = newTitle => (title = newTitle);
+  let _title = title;
+  const getTitle = () => _title;
+  const setTitle = newTitle => (_title = newTitle);
 
   return {
     ...obj,

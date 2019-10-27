@@ -6,9 +6,9 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watchPathIgnorePatterns /node_modules/ --watchAll",
+    "test:watch:coverage": "yarn test:watch --coverage",
     "build": "webpack",
-    "dev": "webpack-dev-server",
-    "doc:build": "jsdoc --configure .jsdoc.json --verbose"
+    "dev": "webpack-dev-server"
   },
   "author": "Konnor Rogers",
   "license": "ISC",
