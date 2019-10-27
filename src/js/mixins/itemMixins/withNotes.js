@@ -5,7 +5,7 @@ export const withNotes = (notes = []) => obj => {
 
   const getNotes = () => _notes;
 
-  const addNote = (...newNotes) => {
+  const addNotes = (...newNotes) => {
     _notes = addToArray(_notes, newNotes.flat());
     return _notes;
   };
@@ -13,6 +13,6 @@ export const withNotes = (notes = []) => obj => {
   return {
     ...obj,
     getNotes,
-    addNote,
+    addNotes,
   };
 };

@@ -29,5 +29,9 @@ describe('withLabel()', () => {
     labelObj.addLabels(label1, label2, label3);
 
     expect(labelObj.getLabels()).toStrictEqual(labels);
+
+    labelObj.addLabels(labels);
+
+    expect(labelObj.getLabels()).toStrictEqual(labels.concat(labels));
   });
 });
