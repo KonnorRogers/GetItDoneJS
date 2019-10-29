@@ -1,5 +1,7 @@
 /**
  * Dom manipulations IE: rendering the page, creating elements, etc
+ * @example
+ * import DomManipulator from '<path>/<to>/domManipulator.js';
  */
 export default (function DomManipulator() {
   // Creates an  element given certain parameters
