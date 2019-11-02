@@ -4,3 +4,4 @@ doc
 yarn-error*
 coverage/
 tags
+.git
