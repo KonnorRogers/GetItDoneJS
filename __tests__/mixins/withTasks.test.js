@@ -1,3 +1,3 @@
 import {withTasks} from '../../src/js/mixins/withTasks.js';
 
-test.skip('', () => {});
+test('Should add tasks to an object', () => {});
