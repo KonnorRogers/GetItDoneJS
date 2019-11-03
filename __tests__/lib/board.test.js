@@ -1,4 +1,4 @@
-import Board from '../src/js/board.js';
+import Board from '../../src/js/lib/board.js';
 
 describe('Board()', () => {
   test('Should have a board with default values', () => {

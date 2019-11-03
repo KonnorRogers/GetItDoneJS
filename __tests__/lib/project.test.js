@@ -1,4 +1,4 @@
-import Project from '../src/js/project.js';
+import Project from '../../src/js/lib/project.js';
 
 describe('Project()', () => {
   test('Should create a Project with isProject set to true', () => {

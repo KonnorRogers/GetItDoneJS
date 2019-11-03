@@ -1,4 +1,4 @@
-import Task from '../src/js/task.js';
+import Task from '../../src/js/lib/task.js';
 
 describe('Task()', () => {
   test('Should create a task with isTask set to true', () => {

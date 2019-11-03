@@ -1,6 +1,6 @@
-import {pipe} from './utils/pipe.js';
-import {withProjects} from './mixins/withProjects';
-import {withTasks} from './mixins/withTasks';
+import {pipe} from '../utils/pipe.js';
+import {withProjects} from '../mixins/withProjects';
+import {withTasks} from '../mixins/withTasks';
 
 /**
  * The board is the default spot for everything to go.
@@ -14,7 +14,7 @@ import {withTasks} from './mixins/withTasks';
 export default (function Board(props = {}) {
   const _isBoard = true;
 
-  const isBoard = obj => _isBoard;
+  const isBoard = () => _isBoard;
 
   return pipe(
     withProjects(props.projects),

@@ -1,5 +1,5 @@
-import {pipe} from './utils/pipe.js';
-import ItemMixin from './mixins/itemMixin.js';
+import {pipe} from '../utils/pipe.js';
+import ItemMixin from '../mixins/itemMixin.js';
 
 /**
  * A task is the building block for the todo list. This is the smallest value

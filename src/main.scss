@@ -6,8 +6,18 @@
   box-sizing: border-box;
 }
 
-.container {
+#container {
   margin: 0 auto;
   text-align: center;
   position: relative;
+  border: 1px solid black;
+  min-height: 95vh;
+}
+
+#projects-tab,
+#tasks-tab {
+  .focus {
+    background: gray;
+    color: white;
+  }
 }
