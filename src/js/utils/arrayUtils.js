@@ -4,9 +4,9 @@
  * This will flatten the elements passed in so there cannot be nested arrays.
  * This will only flatten array one level deep.
  *
- * @param {*[]} ary - The array to add to
- * @return {Function(*|*[])} Returns a curried function which accepts a spread of items.
- * This function will then return a new array which does not mutate the original array
+ * @param {*[]} ary - The ary to add to
+ * @return {(...elements) => *[]} - Returns a function which takes in a spread of elements which when passed in
+ * will return a new array.
  *
  * @example
  * import {addToArray} from '<path>/<to>/arrayUtils.js';
