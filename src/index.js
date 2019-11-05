@@ -17,3 +17,4 @@ DomManipulator.appendChildrenTo(docFrag)(board);
 rootElem.appendChild(docFrag);
 
 document.body.appendChild(rootElem);
+DomManipulator.setFocusElement();

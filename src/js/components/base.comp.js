@@ -1,3 +1,5 @@
+import {DomManipulator} from '../utils/domManipulator.js';
+
 /**
  * Base keeps track of a components properties. Can be extended to add additional functionality
  * @example
@@ -39,8 +41,17 @@ export const Base = (props = {}) => {
     return _props;
   };
 
+  /**
+   * Base rendering for a component
+   * @return {HTMLElement}
+   */
+  const render = () => {
+    return DomManipulator.createElement(props.element, props);
+  };
+
   return {
     getProps,
     setProps,
+    render,
   };
 };

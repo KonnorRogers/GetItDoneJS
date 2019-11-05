@@ -29,8 +29,23 @@ export default (function DomManipulator() {
     return parent;
   };
 
+  const setFocusElement = (url = null) => {
+    url = url || document.URL;
+    let focusId = url.split('#')[1];
+
+    if (!focusId) {
+      focusId = 'tasks-tab';
+    }
+
+    const focusElement = document.getElementById(focusId);
+    focusElement.classList.add('focus');
+
+    return focusElement;
+  };
+
   return {
     createElement,
     appendChildrenTo,
+    setFocusElement,
   };
 })();
