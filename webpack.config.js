@@ -18,7 +18,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.s[ac]ss$/i,
+        // less verbose way of saying .sass / .css / .scss
+        // test: /\.s?(c|a)ss/i,
+
+        // more verbose
+        test: /\.(scss|sass|css)/i,
         use: [
           // Use minicssextract instead of style loader
           {

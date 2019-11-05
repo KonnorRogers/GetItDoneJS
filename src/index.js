@@ -1,4 +1,7 @@
+// Normalize css
+import 'normalize.css';
 import './main.scss';
+
 import DomManipulator from './js/utils/domManipulator.js';
 import {Board} from './js/components/board.comp.js';
 import {Container} from './js/components/container.comp.js';

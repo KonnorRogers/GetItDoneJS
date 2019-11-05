@@ -5,12 +5,25 @@ export const Tab = (props = {}) => {
   const _base = Base(props);
   const _baseProps = _base.getProps();
 
+  const removeFocus = () => {
+    const focusedItems = document.querySelectorAll('.focus');
+
+    if (focusedItems.length > 0) {
+      focusedItems.forEach(e => e.classList.remove('focus'));
+    }
+  };
+
+  const addFocus = id => {
+    document.getElementById(id).classList.add('focus');
+  };
+
   const setDefaultProps = id => {
     const element = _baseProps.element || 'a';
     const className = _baseProps.className || 'tab';
     const href = `#${id}`;
     const onclick = () => {
-      document.getElementById(id).classList.add('focus');
+      removeFocus();
+      addFocus(id);
     };
 
     _base.setProps({element, className, href, onclick, onblur});
@@ -20,6 +33,7 @@ export const Tab = (props = {}) => {
     const button = DomManipulator.createElement(props.element, props);
     return button;
   };
+
   /**
    * @param {string} id - The id of the tab. The id must be supplied or it will error.
    * The id is used to link to the tab.
