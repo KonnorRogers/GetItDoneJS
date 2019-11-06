@@ -40,6 +40,26 @@ yarn test
 yarn test:watch
 ```
 
+## How everything works
+
+### Components
+
+UI components are stored in the src/js/components file & are saved as \*.comp.js
+
+A typical component is created as follows:
+
+````javascript
+import DomManipulator from '../utils/domManipulator.js';
+import {Base} from './base.comp.js';
+
+export const addItemForm = (props = {}) => {
+  const _base = Base(props);
+  const _baseProps = _base.getProps();
+
+  // ...Your code here
+};
+```
+
 ## Checklist
 
 - [x] Your ‘todos’ are going to be objects that you’ll want to dynamically create, which means either using factories or constructors/classes to generate them.
@@ -68,3 +88,4 @@ yarn test:watch
 - [ ] Use localStorage to save user’s projects and todos between sessions.<br>
 - Since you are probably already using webpack, adding external libraries from npm is a cinch! You might want to consider using the following useful library in your code:
   - date-fns gives you a bunch of handy functions for formatting and manipulating dates and times.
+````

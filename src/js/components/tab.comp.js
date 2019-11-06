@@ -35,6 +35,9 @@ export const Tab = (props = {}) => {
   };
 
   /**
+   * Every tab must be created with an ID. Without an id, it will just
+   * return null
+   *
    * @param {string} id - The id of the tab. The id must be supplied or it will error.
    * The id is used to link to the tab.
    * @return {HTMLElement} Returns an HTMLElement, defaults to an <a> tag w/ a nested <button>

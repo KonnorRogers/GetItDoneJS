@@ -1,7 +1,9 @@
-import {DomManipulator} from '../utils/domManipulator.js';
+import DomManipulator from '../utils/domManipulator.js';
 
 /**
- * Base keeps track of a components properties. Can be extended to add additional functionality
+ * Base keeps track of a components properties. Can be extended to add additional functionality.
+ * This is generally not meant to be used directly, but can be if needed
+ *
  * @example
  * import {Base} from '<path>/<to>/base.comp.js';
  * const Component = (props = {}) => {
