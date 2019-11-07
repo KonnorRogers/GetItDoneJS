@@ -1,11 +1,11 @@
-import DomManipulator from '../utils/domManipulator.js';
+import DomManipulator from '../../utils/domManipulator.js';
 
 /**
  * Base keeps track of a components properties. Can be extended to add additional functionality.
  * This is generally not meant to be used directly, but can be if needed
  *
  * @example
- * import {Base} from '<path>/<to>/base.comp.js';
+ * import {Base} from '<path>/<to>.base.js';
  * const Component = (props = {}) => {
  *   const _base = Base(props);
  *
@@ -22,10 +22,13 @@ import DomManipulator from '../utils/domManipulator.js';
  *
  * const myComponent = Component();
  * myComponent.render();
- * // => HTMLDivElement { ... innerText: 'new text', ...}
+ * // => HTMLDivElement { .. innerText: 'new text', ..}
  */
 export const Base = (props = {}) => {
   const _props = props;
+  const _domManipulator = DomManipulator;
+
+  const dom = () => _domManipulator;
 
   /**
    * Retreve an objects properties
@@ -55,5 +58,6 @@ export const Base = (props = {}) => {
     getProps,
     setProps,
     render,
+    dom,
   };
 };

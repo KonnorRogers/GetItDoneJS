@@ -1,5 +1,4 @@
-import DomManipulator from '../utils/domManipulator.js';
-import {Base} from './base.comp.js';
+import {Base} from './base.js';
 
 export const Tab = (props = {}) => {
   const _base = Base(props);
@@ -30,7 +29,7 @@ export const Tab = (props = {}) => {
   };
 
   const renderButton = props => {
-    const button = DomManipulator.createElement(props.element, props);
+    const button = _base.dom().createElement(props.element, props);
     return button;
   };
 
@@ -51,7 +50,7 @@ export const Tab = (props = {}) => {
     // Set defaults for the elements properties
     setDefaultProps(id);
 
-    const link = DomManipulator.createElement(_baseProps.element, _baseProps);
+    const link = _base.dom().createElement(_baseProps.element, _baseProps);
 
     // Remove the innerText from the link
     link.innerText = '';

@@ -1,5 +1,4 @@
-import DomManipulator from '../utils/domManipulator.js';
-import {Base} from './base.comp.js';
+import {Base} from '../utilities/base.js';
 
 export const projectForm = (props = {}) => {
   const _base = Base(props);
@@ -8,7 +7,7 @@ export const projectForm = (props = {}) => {
   const onclick = () => {};
 
   const render = () => {
-    const form = DomManipulator.createElement(_baseProps.element, _baseProps);
+    const form = _base.dom().createElement(_baseProps.element, _baseProps);
     return form;
   };
 
