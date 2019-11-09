@@ -1,4 +1,4 @@
-import {withStartDate} from '../../../src/js/mixins/itemMixins/withStartDate.js';
+import {withStartDate} from '../../../../src/js/lib/mixins/itemMixins/withStartDate.js';
 describe('withStartDate()', () => {
   test('Should create a start date object', () => {
     const startDateObj = withStartDate()({});

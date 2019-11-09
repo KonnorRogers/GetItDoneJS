@@ -1,4 +1,4 @@
-import {addToArray} from '../utils/arrayUtils.js';
+import {addToArray} from '../../utils/arrayUtils.js';
 
 /**
  * Mixin for using tasks. Ideally, this should be used with {@link pipe}

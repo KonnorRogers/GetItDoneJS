@@ -1,4 +1,4 @@
-import {withPriority} from '../../../src/js/mixins/itemMixins/withPriority.js';
+import {withPriority} from '../../../../src/js/lib/mixins/itemMixins/withPriority.js';
 
 describe('withPriority()', () => {
   test('Should provide priority', () => {

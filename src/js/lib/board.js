@@ -1,6 +1,6 @@
 import {pipe} from '../utils/pipe.js';
-import {withProjects} from '../mixins/withProjects';
-import {withTasks} from '../mixins/withTasks';
+import {withProjects} from './mixins/withProjects';
+import {withTasks} from './mixins/withTasks';
 
 /**
  * The board is the default spot for everything to go.

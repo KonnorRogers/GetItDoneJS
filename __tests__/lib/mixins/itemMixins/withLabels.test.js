@@ -1,4 +1,4 @@
-import {withLabels} from '../../../src/js/mixins/itemMixins/withLabels.js';
+import {withLabels} from '../../../../src/js/lib/mixins/itemMixins/withLabels.js';
 
 describe('withLabel()', () => {
   test('Should return a label object', () => {

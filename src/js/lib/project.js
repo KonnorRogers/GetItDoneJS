@@ -1,6 +1,6 @@
 import {pipe} from '../utils/pipe.js';
-import {withTasks} from '../mixins/withTasks.js';
-import ItemMixin from '../mixins/itemMixin.js';
+import {withTasks} from './mixins/withTasks.js';
+import ItemMixin from './mixins/itemMixin.js';
 
 /**
  * A project is a little more in depth than a task.

@@ -1,4 +1,4 @@
-import ItemMixin from '../../src/js/mixins/itemMixin.js';
+import ItemMixin from '../../../src/js/lib/mixins/itemMixin.js';
 
 describe('ItemMixin()', () => {
   test('Should create a default item mixin', () => {

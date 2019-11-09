@@ -1,4 +1,4 @@
-import {withFinished} from '../../../src/js/mixins/itemMixins/withFinished.js';
+import {withFinished} from '../../../../src/js/lib/mixins/itemMixins/withFinished.js';
 
 describe('withFinished()', () => {
   test('Should return an Object', () => {

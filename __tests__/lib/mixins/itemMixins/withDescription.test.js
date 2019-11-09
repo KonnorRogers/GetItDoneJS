@@ -1,4 +1,4 @@
-import {withDescription} from '../../../src/js/mixins/itemMixins/withDescription.js';
+import {withDescription} from '../../../../src/js/lib/mixins/itemMixins/withDescription.js';
 
 describe('withDescription()', () => {
   test('Should return an Object', () => {

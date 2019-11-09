@@ -1,4 +1,4 @@
-import {withNotes} from '../../../src/js/mixins/itemMixins/withNotes.js';
+import {withNotes} from '../../../../src/js/lib/mixins/itemMixins/withNotes.js';
 
 describe('withNotes()', () => {
   test('Should return a note object', () => {

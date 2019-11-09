@@ -1,4 +1,4 @@
-import {withTasks} from '../../src/js/mixins/withTasks.js';
+import {withTasks} from '../../../src/js/lib/mixins/withTasks.js';
 
 test('Should add tasks to an object', () => {
   const taskObj = withTasks()({});

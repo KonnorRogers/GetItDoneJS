@@ -1,4 +1,4 @@
-import {withEndDate} from '../../../src/js/mixins/itemMixins/withEndDate.js';
+import {withEndDate} from '../../../../src/js/lib/mixins/itemMixins/withEndDate.js';
 
 describe('withEndDate()', () => {
   test('Should return an Object', () => {

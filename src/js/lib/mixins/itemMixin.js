@@ -1,4 +1,4 @@
-import {pipe} from '../utils/pipe.js';
+import {pipe} from '../../utils/pipe.js';
 
 import {withDescription} from './itemMixins/withDescription.js';
 import {withFinished} from './itemMixins/withFinished.js';

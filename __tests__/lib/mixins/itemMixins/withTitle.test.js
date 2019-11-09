@@ -1,4 +1,4 @@
-import {withTitle} from '../../../src/js/mixins/itemMixins/withTitle.js';
+import {withTitle} from '../../../../src/js/lib/mixins/itemMixins/withTitle.js';
 
 describe('withTitle()', () => {
   test('Should return an object with title functions', () => {
