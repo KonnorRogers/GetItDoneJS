@@ -6,15 +6,11 @@ import DomManipulator from './js/utils/domManipulator.js';
 import {Board} from './js/components/board/board.js';
 import {Container} from './js/components/utilities/container.js';
 
-const rootElem = Container().render();
-
-const docFrag = document.createDocumentFragment();
+const container = Container().render();
 
 const board = Board().render();
 
-DomManipulator.appendChildrenTo(docFrag)(board);
+container.appendChild(board);
 
-rootElem.appendChild(docFrag);
-
-document.body.appendChild(rootElem);
+document.body.appendChild(container);
 DomManipulator.setFocusElement();

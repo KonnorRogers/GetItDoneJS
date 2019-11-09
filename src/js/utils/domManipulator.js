@@ -34,7 +34,7 @@ export default (function DomManipulator() {
     let focusId = url.split('#')[1];
 
     if (!focusId) {
-      focusId = 'tasks-tab';
+      focusId = 'tasks';
     }
 
     const focusElement = document.getElementById(focusId);

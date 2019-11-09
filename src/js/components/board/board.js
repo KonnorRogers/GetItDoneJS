@@ -11,8 +11,8 @@ export const Board = (props = {}) => {
   };
 
   const renderTabs = () => {
-    const projectsTab = renderTab({innerText: 'Projects', id: 'projects-tab'});
-    const tasksTab = renderTab({innerText: 'Tasks', id: 'tasks-tab'});
+    const projectsTab = renderTab({innerText: 'Projects', id: 'projects'});
+    const tasksTab = renderTab({innerText: 'Tasks', id: 'tasks'});
 
     const tabs = _base.dom().createElement('div', {id: 'tabs'});
 
