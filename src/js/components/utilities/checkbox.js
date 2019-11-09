@@ -1,5 +1,4 @@
-import DomManipulator from '../utils/domManipulator.js';
-import {Base} from './base.comp.js';
+import {Base} from './base.js';
 
 export const Checkbox = (props = {}) => {
   const _base = Base(props);
@@ -12,7 +11,7 @@ export const Checkbox = (props = {}) => {
 
     _base.setProps({type, className, element});
 
-    return DomManipulator.createElement(_baseProps.element, _baseProps);
+    return _base.dom().createElement(_baseProps.element, _baseProps);
   };
 
   return {render};

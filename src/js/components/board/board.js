@@ -1,6 +1,5 @@
-import DomManipulator from '../utils/domManipulator.js';
-import {Base} from './base.comp.js';
-import {Tab} from './tab.comp.js';
+import {Base} from '../utilities/base.js';
+import {Tab} from '../utilities/tab.js';
 
 export const Board = (props = {}) => {
   const _base = Base(props);
@@ -15,9 +14,9 @@ export const Board = (props = {}) => {
     const projectsTab = renderTab({innerText: 'Projects', id: 'projects-tab'});
     const tasksTab = renderTab({innerText: 'Tasks', id: 'tasks-tab'});
 
-    const tabs = DomManipulator.createElement('div', {id: 'tabs'});
+    const tabs = _base.dom().createElement('div', {id: 'tabs'});
 
-    DomManipulator.appendChildrenTo(tabs)(tasksTab, projectsTab);
+    _base.dom().appendChildrenTo(tabs)(tasksTab, projectsTab);
 
     return tabs;
   };
@@ -31,9 +30,9 @@ export const Board = (props = {}) => {
 
     _base.setProps({id, element});
 
-    const board = DomManipulator.createElement(element, _baseProps);
+    const board = _base.dom().createElement(element, _baseProps);
 
-    DomManipulator.appendChildrenTo(board)(renderTabs());
+    _base.dom().appendChildrenTo(board)(renderTabs());
 
     return board;
   };

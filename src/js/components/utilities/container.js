@@ -1,5 +1,4 @@
-import DomManipulator from '../utils/domManipulator.js';
-import {Base} from './base.comp.js';
+import {Base} from './base.js';
 
 export const Container = (props = {}) => {
   const _base = Base(props);
@@ -11,7 +10,7 @@ export const Container = (props = {}) => {
 
     _base.setProps({element, id});
 
-    return DomManipulator.createElement(_baseProps.element, _baseProps);
+    return _base.dom().createElement(_baseProps.element, _baseProps);
   };
   return {render};
 };

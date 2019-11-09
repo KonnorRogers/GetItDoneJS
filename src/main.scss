@@ -1,9 +1,17 @@
 @import 'scss/screen';
+@import 'scss/palette';
+
+// Defaults
 
 *,
 *:before,
 *:after {
   box-sizing: border-box;
+}
+
+button {
+  border: none;
+  box-shadow: 0 2px 4px hsla(0, 0, 0, 0.2);
 }
 
 #container {
@@ -14,10 +22,6 @@
   min-height: 95vh;
 }
 
-#projects-tab,
-#tasks-tab {
-  .focus {
-    background: gray;
-    color: white;
-  }
+.tab.focus > button {
+  background: gray;
 }
