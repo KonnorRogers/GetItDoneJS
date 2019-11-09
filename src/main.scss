@@ -9,19 +9,70 @@
   box-sizing: border-box;
 }
 
-button {
-  border: none;
-  box-shadow: 0 2px 4px hsla(0, 0, 0, 0.2);
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+body {
+  color: $gray-700;
 }
 
 #container {
   margin: 0 auto;
+  padding-top: 2rem;
   text-align: center;
   position: relative;
-  border: 1px solid black;
   min-height: 95vh;
+  background: $gray-300;
 }
 
-.tab.focus > button {
-  background: gray;
+.tab {
+  position: relative;
+}
+
+.tab {
+  border: none;
+  background: $gray-200;
+  color: $gray-700;
+  box-shadow: 0 2px 4px hsla(0, 0, 0, 0.2);
+  padding: 0.5rem 0.8rem;
+  margin: 0.5rem;
+  font-size: 1.25rem;
+  letter-spacing: 0.07rem;
+  border-radius: 4px;
+}
+
+// Shows which tab is currently being displayed
+.tab.focus {
+  color: $gray-200;
+  background: $primary-500;
+}
+
+// Create a triangle to highlight the item being display
+.tab.focus:after {
+  content: '';
+  position: absolute;
+  top: 3rem;
+  left: 1.25rem;
+  width: 0;
+  height: 0;
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-top: 1rem solid $primary-500;
+  clear: both;
+}
+
+.list {
+  margin-top: 3rem;
+  text-align: left;
+}
+
+@include md-screen {
+  #tabs {
+    padding-top: 4rem;
+  }
 }

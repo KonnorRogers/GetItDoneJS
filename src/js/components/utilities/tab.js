@@ -25,12 +25,7 @@ export const Tab = (props = {}) => {
       addFocus(id);
     };
 
-    _base.setProps({element, className, href, onclick, onblur});
-  };
-
-  const renderButton = props => {
-    const button = _base.dom().createElement(props.element, props);
-    return button;
+    _base.setProps({href, element, className, onclick});
   };
 
   /**
@@ -51,16 +46,6 @@ export const Tab = (props = {}) => {
     setDefaultProps(id);
 
     const link = _base.dom().createElement(_baseProps.element, _baseProps);
-
-    // Remove the innerText from the link
-    link.innerText = '';
-
-    const button = renderButton({
-      element: 'button',
-      innerText: _baseProps.innerText,
-    });
-
-    link.appendChild(button);
 
     return link;
   };

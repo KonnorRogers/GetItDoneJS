@@ -29,23 +29,60 @@ export default (function DomManipulator() {
     return parent;
   };
 
-  const setFocusElement = (url = null) => {
+  const setFocusId = (doc, url = null) => {
+    doc = doc || document;
     url = url || document.URL;
+
     let focusId = url.split('#')[1];
 
     if (!focusId) {
       focusId = 'tasks';
     }
 
-    const focusElement = document.getElementById(focusId);
+    return focusId;
+  };
+
+  const setFocusElement = (doc, state, url = null) => {
+    doc = doc || document;
+    url = url || document.URL;
+
+    const focusId = setFocusId(doc, url);
+    const focusElement = doc.getElementById(focusId);
     focusElement.classList.add('focus');
 
+    state.focus = focusId;
     return focusElement;
+  };
+
+  const watchFocusChange = (focusElement, state) => {
+    // Options for the observer (which mutations to observe)
+    const config = {attributes: true, childList: true, subtree: true};
+
+    // Callback function to execute when mutations are observed
+    const callback = (mutationsList, _observer) => {
+      let focus = null;
+
+      for (let mutation of mutationsList) {
+        if (mutation.type === 'attributes') {
+          focus = document.querySelector('.focus');
+          state.focus = focus.id;
+          break;
+        }
+      }
+    };
+
+    // Create an observer instance linked to the callback function
+    const observer = new MutationObserver(callback);
+
+    // Start observing the target node for configured mutations
+    observer.observe(focusElement, config);
   };
 
   return {
     createElement,
     appendChildrenTo,
     setFocusElement,
+    setFocusId,
+    watchFocusChange,
   };
 })();

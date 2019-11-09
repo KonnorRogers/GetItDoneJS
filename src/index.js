@@ -6,11 +6,31 @@ import DomManipulator from './js/utils/domManipulator.js';
 import {Board} from './js/components/board/board.js';
 import {Container} from './js/components/utilities/container.js';
 
+// Wrappers for everything
 const container = Container().render();
+const board = Board();
+const frag = new DocumentFragment();
 
-const board = Board().render();
+board.getBoardState().addTasks('task1');
 
-container.appendChild(board);
+frag.appendChild(container);
 
-document.body.appendChild(container);
-DomManipulator.setFocusElement();
+container.appendChild(board.render());
+
+// Will reach out and set the focus element as well as return the new focus element
+DomManipulator.setFocusElement(frag, board.getBoardState());
+
+document.body.appendChild(frag);
+
+// Focus can be only on 2 tabs. Projects, or tasks.
+const observable = document.getElementById('tabs');
+
+DomManipulator.watchFocusChange(observable, board.getBoardState());
+
+const btn = document.createElement('button');
+btn.innerText = 'get State';
+btn.onclick = () => {
+  console.log(board.getBoardState());
+};
+
+document.body.appendChild(btn);
