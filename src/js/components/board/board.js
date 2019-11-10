@@ -1,15 +1,33 @@
 import {Base} from '../utilities/base.js';
 import {Tab} from '../utilities/tab.js';
 import BoardState from '../../lib/board.js';
+import {saveObject, loadObject} from '../../utils/storageUtil.js';
 
 export const Board = (props = {}) => {
   const _base = Base(props);
   const _baseProps = _base.getProps();
 
+  // Fetch from localStorage first
   const _boardState = BoardState;
 
   const getBoardState = () => {
     return _boardState;
+  };
+
+  const updateLocalStorage = () => {
+    const tasks = _boardState.getTasks();
+    const projects = _boardState.getProjects();
+
+    saveObject({tasks, projects}, 'board');
+  };
+
+  const retrieveLocalStorage = () => {
+    const obj = loadObject('board');
+
+    _boardState.setTasks(obj.tasks);
+    _boardState.setProjects(obj.projects);
+
+    return obj;
   };
 
   const renderTabs = () => {
@@ -26,7 +44,6 @@ export const Board = (props = {}) => {
   const renderTasks = () => {
     const tasks = getBoardState().getTasks();
 
-    console.log(tasks);
     const list = _base.dom().createElement('ul', {className: 'list'});
 
     tasks.forEach((task, index) => {
@@ -39,12 +56,27 @@ export const Board = (props = {}) => {
     return list;
   };
 
+  const renderProjects = () => {
+    const projects = getBoardState().getProjects();
+
+    const list = _base.dom().createElement('ul', {className: 'list'});
+
+    projects.forEach((project, index) => {
+      const item = _base
+        .dom()
+        .createElement('li', {id: `project[${index}]`, innerText: project});
+      list.appendChild(item);
+    });
+
+    return list;
+  };
+
   const renderCurrentFocusList = () => {
-    if (getBoardState().currentFocus === 'tasks') {
-      return renderTasks();
-    } else if (getBoardState().currentFocus === 'projects') {
+    if (getBoardState().focus === 'projects') {
       return renderProjects();
     }
+
+    return renderTasks();
   };
 
   const render = () => {
@@ -55,10 +87,11 @@ export const Board = (props = {}) => {
 
     const board = _base.dom().createElement(element, _baseProps);
 
-    _base.dom().appendChildrenTo(board)(renderTabs(), renderTasks());
+    _base.dom().appendChildrenTo(board)(renderTabs(), renderCurrentFocusList());
+    console.log(getBoardState().focus);
 
     return board;
   };
 
-  return {render, getBoardState};
+  return {render, getBoardState, retrieveLocalStorage, updateLocalStorage};
 };

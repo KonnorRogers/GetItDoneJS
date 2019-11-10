@@ -30,10 +30,14 @@ export const withTasks = (tasks = []) => obj => {
   };
 
   const getTasks = () => _tasks;
+  const setTasks = newTasks => {
+    _tasks = newTasks;
+  };
 
   return {
     ...obj,
     getTasks,
     addTasks,
+    setTasks,
   };
 };

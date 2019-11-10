@@ -54,7 +54,7 @@ export default (function DomManipulator() {
     return focusElement;
   };
 
-  const watchFocusChange = (focusElement, state) => {
+  const watchFocusChange = (focusElement, state, board) => {
     // Options for the observer (which mutations to observe)
     const config = {attributes: true, childList: true, subtree: true};
 
@@ -66,6 +66,7 @@ export default (function DomManipulator() {
         if (mutation.type === 'attributes') {
           focus = document.querySelector('.focus');
           state.focus = focus.id;
+          board.render();
           break;
         }
       }

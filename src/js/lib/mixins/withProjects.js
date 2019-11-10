@@ -30,10 +30,14 @@ export const withProjects = (projects = []) => obj => {
   };
 
   const getProjects = () => _projects;
+  const setProjects = newProjects => {
+    _projects = newProjects;
+  };
 
   return {
     ...obj,
     addProjects,
     getProjects,
+    setProjects,
   };
 };
