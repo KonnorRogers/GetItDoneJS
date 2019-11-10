@@ -54,7 +54,7 @@ export default (function DomManipulator() {
     return focusElement;
   };
 
-  const watchFocusChange = (focusElement, state, board) => {
+  const watchFocusChange = (focusElement, board) => {
     // Options for the observer (which mutations to observe)
     const config = {attributes: true, childList: true, subtree: true};
 
@@ -65,8 +65,14 @@ export default (function DomManipulator() {
       for (let mutation of mutationsList) {
         if (mutation.type === 'attributes') {
           focus = document.querySelector('.focus');
-          state.focus = focus.id;
-          board.render();
+          board.getBoardState().focus = focus.id;
+
+          const boardEle = document.querySelector('#board');
+          const list = document.querySelector('.item-list');
+          boardEle.removeChild(list);
+
+          boardEle.appendChild(board.renderCurrentFocusList());
+
           break;
         }
       }

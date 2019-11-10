@@ -26,7 +26,7 @@ document.body.appendChild(frag);
 // Focus can be only on 2 tabs. Projects, or tasks.
 const observable = document.getElementById('tabs');
 
-DomManipulator.watchFocusChange(observable, board.getBoardState());
+DomManipulator.watchFocusChange(observable, board);
 
 const btn = document.createElement('button');
 btn.innerText = 'get State';

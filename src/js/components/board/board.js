@@ -44,7 +44,7 @@ export const Board = (props = {}) => {
   const renderTasks = () => {
     const tasks = getBoardState().getTasks();
 
-    const list = _base.dom().createElement('ul', {className: 'list'});
+    const list = _base.dom().createElement('ul', {className: 'item-list'});
 
     tasks.forEach((task, index) => {
       const item = _base
@@ -59,7 +59,7 @@ export const Board = (props = {}) => {
   const renderProjects = () => {
     const projects = getBoardState().getProjects();
 
-    const list = _base.dom().createElement('ul', {className: 'list'});
+    const list = _base.dom().createElement('ul', {className: 'item-list'});
 
     projects.forEach((project, index) => {
       const item = _base
@@ -88,10 +88,15 @@ export const Board = (props = {}) => {
     const board = _base.dom().createElement(element, _baseProps);
 
     _base.dom().appendChildrenTo(board)(renderTabs(), renderCurrentFocusList());
-    console.log(getBoardState().focus);
 
     return board;
   };
 
-  return {render, getBoardState, retrieveLocalStorage, updateLocalStorage};
+  return {
+    render,
+    renderCurrentFocusList,
+    getBoardState,
+    retrieveLocalStorage,
+    updateLocalStorage,
+  };
 };

@@ -30,6 +30,16 @@ body {
   background: $gray-300;
 }
 
+#board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  flex: 1 1 0%;
+}
+
 .tab {
   position: relative;
 }
@@ -38,7 +48,8 @@ body {
   border: none;
   background: $gray-200;
   color: $gray-700;
-  box-shadow: 0 2px 4px hsla(0, 0, 0, 0.2);
+  box-shadow: 0 10px 15px -3px hsla(0, 0, 0, 0.2),
+    0 4px 6px -2px hsla(0, 0, 0, 0.05);
   padding: 0.5rem 0.8rem;
   margin: 0.5rem;
   font-size: 1.25rem;
@@ -66,13 +77,28 @@ body {
   clear: both;
 }
 
-.list {
+.item-list {
+  min-height: 60vh;
+  border: 2px solid $primary-300;
+  box-shadow: 0 10px 15px -3px hsla(0, 0, 0, 0.2),
+    0 4px 6px -2px hsla(0, 0, 0, 0.05);
+  border-radius: 8px;
+  background: $gray-100;
+  margin: 0 auto;
   margin-top: 3rem;
-  text-align: left;
+  text-align: center;
+  width: 95%;
+}
+
+@include sm-screen {
 }
 
 @include md-screen {
   #tabs {
     padding-top: 4rem;
+  }
+
+  .item-list {
+    width: 75%;
   }
 }
