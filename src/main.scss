@@ -58,13 +58,13 @@ body {
 }
 
 // Shows which tab is currently being displayed
-.tab.focus {
+.tab.target {
   color: $gray-200;
   background: $primary-500;
 }
 
 // Create a triangle to highlight the item being display
-.tab.focus:after {
+.tab.target:after {
   content: '';
   position: absolute;
   top: 3rem;

@@ -29,67 +29,18 @@ export default (function DomManipulator() {
     return parent;
   };
 
-  const setFocusId = (doc, url = null) => {
-    doc = doc || document;
-    url = url || document.URL;
-
-    let focusId = url.split('#')[1];
-
-    if (!focusId) {
-      focusId = 'tasks';
+  const setTarget = (ary, defaultTarget) => {
+    if (ary.includes(location.hash)) {
+      return document.querySelector(location.hash).classList.add('target');
     }
 
-    return focusId;
-  };
-
-  const setFocusElement = (doc, state, url = null) => {
-    doc = doc || document;
-    url = url || document.URL;
-
-    const focusId = setFocusId(doc, url);
-    const focusElement = doc.getElementById(focusId);
-    focusElement.classList.add('focus');
-
-    state.focus = focusId;
-    return focusElement;
-  };
-
-  const watchFocusChange = (focusElement, board) => {
-    // Options for the observer (which mutations to observe)
-    const config = {attributes: true, childList: true, subtree: true};
-
-    // Callback function to execute when mutations are observed
-    const callback = (mutationsList, _observer) => {
-      let focus = null;
-
-      for (let mutation of mutationsList) {
-        if (mutation.type === 'attributes') {
-          focus = document.querySelector('.focus');
-          board.getBoardState().focus = focus.id;
-
-          const boardEle = document.querySelector('#board');
-          const list = document.querySelector('.item-list');
-          boardEle.removeChild(list);
-
-          boardEle.appendChild(board.renderCurrentFocusList());
-
-          break;
-        }
-      }
-    };
-
-    // Create an observer instance linked to the callback function
-    const observer = new MutationObserver(callback);
-
-    // Start observing the target node for configured mutations
-    observer.observe(focusElement, config);
+    // default target
+    document.querySelector(defaultTarget).classList.add('target');
   };
 
   return {
     createElement,
     appendChildrenTo,
-    setFocusElement,
-    setFocusId,
-    watchFocusChange,
+    setTarget,
   };
 })();

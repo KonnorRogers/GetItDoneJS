@@ -18,16 +18,12 @@ frag.appendChild(container);
 
 container.appendChild(board.render());
 
-// Will reach out and set the focus element as well as return the new focus element
-DomManipulator.setFocusElement(frag, board.getBoardState());
-
 document.body.appendChild(frag);
 
-// Focus can be only on 2 tabs. Projects, or tasks.
-const observable = document.getElementById('tabs');
-
-DomManipulator.watchFocusChange(observable, board);
-
+const tabs = ['#projects', '#tasks'];
+DomManipulator.setTarget(tabs, tabs[1]);
+DomManipulator.setTarget(
+// State stuff, get rid of this
 const btn = document.createElement('button');
 btn.innerText = 'get State';
 btn.onclick = () => {

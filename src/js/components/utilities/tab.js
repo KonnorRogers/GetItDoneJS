@@ -4,25 +4,15 @@ export const Tab = (props = {}) => {
   const _base = Base(props);
   const _baseProps = _base.getProps();
 
-  const removeFocus = () => {
-    const focusedItems = document.querySelectorAll('.focus');
-
-    if (focusedItems.length > 0) {
-      focusedItems.forEach(e => e.classList.remove('focus'));
-    }
-  };
-
-  const addFocus = id => {
-    document.getElementById(id).classList.add('focus');
-  };
-
   const setDefaultProps = id => {
     const element = _baseProps.element || 'a';
     const className = _baseProps.className || 'tab';
     const href = `#${id}`;
     const onclick = () => {
-      removeFocus();
-      addFocus(id);
+      document
+        .querySelectorAll('.target')
+        .forEach(e => e.classList.remove('target'));
+      document.querySelector(`#${id}`).classList.add('target');
     };
 
     _base.setProps({href, element, className, onclick});
