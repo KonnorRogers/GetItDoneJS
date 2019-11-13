@@ -22,7 +22,6 @@ document.body.appendChild(frag);
 
 const tabs = ['#projects', '#tasks'];
 DomManipulator.setTarget(tabs, tabs[1]);
-DomManipulator.setTarget(
 // State stuff, get rid of this
 const btn = document.createElement('button');
 btn.innerText = 'get State';
