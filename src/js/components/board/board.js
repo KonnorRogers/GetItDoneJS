@@ -71,14 +71,6 @@ export const Board = (props = {}) => {
     return list;
   };
 
-  const renderCurrentFocusList = () => {
-    if (getBoardState().focus === 'projects') {
-      return renderProjects();
-    }
-
-    return renderTasks();
-  };
-
   const render = () => {
     const id = _baseProps.id || 'board';
     const element = _baseProps.element || 'div';
@@ -87,14 +79,17 @@ export const Board = (props = {}) => {
 
     const board = _base.dom().createElement(element, _baseProps);
 
-    _base.dom().appendChildrenTo(board)(renderTabs(), renderCurrentFocusList());
+    _base.dom().appendChildrenTo(board)(
+      renderTabs(),
+      renderProjects(),
+      renderTasks(),
+    );
 
     return board;
   };
 
   return {
     render,
-    renderCurrentFocusList,
     getBoardState,
     retrieveLocalStorage,
     updateLocalStorage,
