@@ -6,6 +6,7 @@ import DomManipulator from './js/utils/domManipulator.js';
 import {loadObject, saveObject} from './js/utils/storageUtil';
 import {Board} from './js/components/board/board.js';
 import {Container} from './js/components/utilities/container.js';
+import {Target} from './js/utils/target.js';
 
 // Wrappers for everything
 const container = Container().render();
@@ -20,13 +21,7 @@ container.appendChild(board.render());
 
 document.body.appendChild(frag);
 
-const tabs = ['#projects', '#tasks'];
-
-DomManipulator.setTarget(tabs, tabs[1]);
-
-window.addEventListener('hashchange', () => {
-  DomManipulator.setTarget(tabs, tabs[1]);
-});
+Target.handleTargets();
 
 // State stuff, get rid of this later
 const btn = document.createElement('button');
