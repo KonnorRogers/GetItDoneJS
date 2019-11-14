@@ -84,7 +84,6 @@ export const Board = (props = {}) => {
     );
 
     displayTargetList(board);
-    // handleTargets();
     return board;
   };
 
@@ -120,6 +119,5 @@ export const Board = (props = {}) => {
     retrieveLocalStorage,
     updateLocalStorage,
     displayTargetList,
-    handleTargets,
   };
 };

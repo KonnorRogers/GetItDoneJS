@@ -21,7 +21,7 @@ container.appendChild(board.render());
 
 document.body.appendChild(frag);
 
-Target.handleTargets();
+Target().handleTargets();
 
 // State stuff, get rid of this later
 const btn = document.createElement('button');
