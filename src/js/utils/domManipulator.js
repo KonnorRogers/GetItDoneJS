@@ -30,6 +30,11 @@ export default (function DomManipulator() {
   };
 
   const setTarget = (ary, defaultTarget) => {
+    // Remove previous targets
+    document
+      .querySelectorAll('.target')
+      .forEach(e => e.classList.remove('target'));
+
     if (ary.includes(location.hash)) {
       return document.querySelector(location.hash).classList.add('target');
     }

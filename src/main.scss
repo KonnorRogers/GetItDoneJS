@@ -41,10 +41,8 @@ body {
 }
 
 .tab {
+  display: inline-block;
   position: relative;
-}
-
-.tab {
   border: none;
   background: $gray-200;
   color: $gray-700;

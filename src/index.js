@@ -21,7 +21,12 @@ container.appendChild(board.render());
 document.body.appendChild(frag);
 
 const tabs = ['#projects', '#tasks'];
+
 DomManipulator.setTarget(tabs, tabs[1]);
+
+window.addEventListener('hashchange', () => {
+  DomManipulator.setTarget(tabs, tabs[1]);
+});
 
 // State stuff, get rid of this later
 const btn = document.createElement('button');
