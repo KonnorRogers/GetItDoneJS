@@ -1,3 +1,4 @@
+import DomManipulator from '';
 export const Target = () => {
   const handleTargets = () => {
     const tabs = ['#tasks', '#projects'];
