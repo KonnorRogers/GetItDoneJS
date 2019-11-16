@@ -78,7 +78,7 @@ body {
 }
 
 .item-list {
-  // min-height: 60vh;
+  min-height: 60vh;
   min-height: 200vh;
   box-shadow: 0 10px 15px -3px hsla(0, 0, 0, 0.2),
     0 4px 6px -2px hsla(0, 0, 0, 0.05);
@@ -97,7 +97,7 @@ body {
 
 @include md-screen {
   #tabs {
-    // padding-top: 4rem;
+    margin-top: 4rem;
   }
 
   .item-list {
