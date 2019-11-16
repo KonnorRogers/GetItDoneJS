@@ -30,6 +30,11 @@ export default (function DomManipulator() {
   };
 
   const setTarget = (ary, defaultTarget) => {
+    // Remove previous targets
+    document
+      .querySelectorAll('.target')
+      .forEach(e => e.classList.remove('target'));
+
     if (ary.includes(location.hash)) {
       return document.querySelector(location.hash).classList.add('target');
     }
@@ -38,9 +43,39 @@ export default (function DomManipulator() {
     document.querySelector(defaultTarget).classList.add('target');
   };
 
+  const targetObserver = (element, callback) => {
+    const config = {attributes: true, childList: true, subtree: true};
+
+    // Callback function to execute when mutations are observed
+    const mutationCallback = function(mutationsList, _observer) {
+      for (let mutation of mutationsList) {
+        callback();
+      }
+    };
+
+    // Create an observer instance linked to the callback function
+    const observer = new MutationObserver(mutationCallback);
+
+    // Start observing the target node for configured mutations
+    observer.observe(element, config);
+  };
+
+  const hideElement = element => {
+    element.classList.add('hide');
+    element.classList.remove('show');
+  };
+
+  const showElement = element => {
+    element.classList.add('show');
+    element.classList.remove('hide');
+  };
+
   return {
     createElement,
     appendChildrenTo,
     setTarget,
+    targetObserver,
+    hideElement,
+    showElement,
   };
 })();

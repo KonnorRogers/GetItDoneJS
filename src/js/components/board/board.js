@@ -41,42 +41,32 @@ export const Board = (props = {}) => {
     return tabs;
   };
 
-  const renderTasks = () => {
-    const tasks = getBoardState().getTasks();
+  const renderList = (type, listItems) => {
+    const list = _base.dom().createElement('ul', {
+      id: `${type}-list`,
+      className: 'item-list hide',
+    });
 
-    const list = _base.dom().createElement('ul', {className: 'item-list'});
-
-    tasks.forEach((task, index) => {
-      const item = _base
+    listItems.forEach((item, index) => {
+      const itemElement = _base
         .dom()
-        .createElement('li', {id: `task[${index}]`, innerText: task});
-      list.appendChild(item);
+        .createElement('li', {id: `${type}[${index}]`, innerText: item});
+      list.appendChild(itemElement);
     });
 
     return list;
+  };
+
+  const renderTasks = () => {
+    const tasks = getBoardState().getTasks();
+
+    return renderList('task', tasks);
   };
 
   const renderProjects = () => {
     const projects = getBoardState().getProjects();
 
-    const list = _base.dom().createElement('ul', {className: 'item-list'});
-
-    projects.forEach((project, index) => {
-      const item = _base
-        .dom()
-        .createElement('li', {id: `project[${index}]`, innerText: project});
-      list.appendChild(item);
-    });
-
-    return list;
-  };
-
-  const renderCurrentFocusList = () => {
-    if (getBoardState().focus === 'projects') {
-      return renderProjects();
-    }
-
-    return renderTasks();
+    return renderList('project', projects);
   };
 
   const render = () => {
@@ -87,16 +77,47 @@ export const Board = (props = {}) => {
 
     const board = _base.dom().createElement(element, _baseProps);
 
-    _base.dom().appendChildrenTo(board)(renderTabs(), renderCurrentFocusList());
+    _base.dom().appendChildrenTo(board)(
+      renderTabs(),
+      renderProjects(),
+      renderTasks(),
+    );
 
+    displayTargetList(board);
     return board;
+  };
+
+  // Display lists
+  const displayTargetList = board => {
+    // const tabElement = document.querySelector('#tabs');
+    const tabElement = board.querySelector('#tabs');
+
+    _base.dom().targetObserver(tabElement, () => {
+      // const element = document.querySelector('.show');
+      // const targetElement = document.querySelector('.target');
+      const element = board.querySelector('.show');
+      const targetElement = board.querySelector('.target');
+
+      if (element) {
+        _base.dom().hideElement(element);
+      }
+
+      if (targetElement.id === 'tasks') {
+        // const taskList = document.querySelector('#task-list');
+        const taskList = board.querySelector('#task-list');
+        _base.dom().showElement(taskList);
+      } else if (targetElement.id === 'projects') {
+        const projectList = board.querySelector('#project-list');
+        _base.dom().showElement(projectList);
+      }
+    });
   };
 
   return {
     render,
-    renderCurrentFocusList,
     getBoardState,
     retrieveLocalStorage,
     updateLocalStorage,
+    displayTargetList,
   };
 };

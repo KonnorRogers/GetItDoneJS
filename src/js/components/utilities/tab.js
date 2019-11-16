@@ -8,14 +8,8 @@ export const Tab = (props = {}) => {
     const element = _baseProps.element || 'a';
     const className = _baseProps.className || 'tab';
     const href = `#${id}`;
-    const onclick = () => {
-      document
-        .querySelectorAll('.target')
-        .forEach(e => e.classList.remove('target'));
-      document.querySelector(`#${id}`).classList.add('target');
-    };
 
-    _base.setProps({href, element, className, onclick});
+    _base.setProps({href, element, className});
   };
 
   /**

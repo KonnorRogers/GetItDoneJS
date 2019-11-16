@@ -40,11 +40,17 @@ body {
   flex: 1 1 0%;
 }
 
-.tab {
-  position: relative;
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
 }
 
 .tab {
+  display: inline-block;
+  position: relative;
   border: none;
   background: $gray-200;
   color: $gray-700;
@@ -79,14 +85,14 @@ body {
 
 .item-list {
   min-height: 60vh;
-  border: 2px solid $primary-300;
   box-shadow: 0 10px 15px -3px hsla(0, 0, 0, 0.2),
     0 4px 6px -2px hsla(0, 0, 0, 0.05);
   border-radius: 8px;
   background: $gray-100;
   margin: 0 auto;
-  margin-top: 3rem;
-  text-align: center;
+  padding: 1rem 1.5rem;
+  text-align: left;
+  margin-top: 1.5rem;
   width: 95%;
 }
 
@@ -100,5 +106,11 @@ body {
 
   .item-list {
     width: 75%;
+  }
+}
+
+@include lg-screen {
+  .item-list {
+    width: 66%;
   }
 }
