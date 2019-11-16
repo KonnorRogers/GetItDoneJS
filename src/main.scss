@@ -27,7 +27,13 @@ body {
   text-align: center;
   position: relative;
   min-height: 95vh;
-  background: $gray-300;
+  background: $gray-200;
+}
+
+#tabs {
+  position: sticky;
+  top: 1rem;
+  z-index: 10;
 }
 
 #board {
@@ -50,41 +56,30 @@ body {
 
 .tab {
   display: inline-block;
-  position: relative;
   border: none;
-  background: $gray-200;
-  color: $gray-700;
-  box-shadow: 0 10px 15px -3px hsla(0, 0, 0, 0.2),
-    0 4px 6px -2px hsla(0, 0, 0, 0.05);
+  color: $gray-500;
   padding: 0.5rem 0.8rem;
-  margin: 0.5rem;
+  margin: 0.5rem 0.8rem;
   font-size: 1.25rem;
   letter-spacing: 0.07rem;
-  border-radius: 4px;
+
+  &:hover,
+  &:focus {
+    color: $gray-800;
+    border-radius: 4px;
+    background: $gray-300;
+  }
 }
 
 // Shows which tab is currently being displayed
 .tab.target {
-  color: $gray-200;
-  background: $primary-500;
-}
-
-// Create a triangle to highlight the item being display
-.tab.target:after {
-  content: '';
-  position: absolute;
-  top: 3rem;
-  left: 1.25rem;
-  width: 0;
-  height: 0;
-  border-left: 1rem solid transparent;
-  border-right: 1rem solid transparent;
-  border-top: 1rem solid $primary-500;
-  clear: both;
+  color: $gray-700;
+  border-bottom: 2px solid $primary-300;
 }
 
 .item-list {
-  min-height: 60vh;
+  // min-height: 60vh;
+  min-height: 200vh;
   box-shadow: 0 10px 15px -3px hsla(0, 0, 0, 0.2),
     0 4px 6px -2px hsla(0, 0, 0, 0.05);
   border-radius: 8px;
@@ -94,6 +89,7 @@ body {
   text-align: left;
   margin-top: 1.5rem;
   width: 95%;
+  position: relative;
 }
 
 @include sm-screen {
@@ -101,7 +97,7 @@ body {
 
 @include md-screen {
   #tabs {
-    padding-top: 4rem;
+    // padding-top: 4rem;
   }
 
   .item-list {
