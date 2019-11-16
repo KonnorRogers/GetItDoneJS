@@ -1,8 +1,12 @@
-import Item from '../utilities/addItemForm.js';
+import {ItemForm} from '../utilities/addItemForm.js';
 
 export const addTaskForm = (props = {}) => {
-  const _base = Base(props);
-  const _baseProps = _base.getProps();
+  const _form = ItemForm(props);
+
+  const createFields = () => {};
+  const setFields = () => {
+    ItemForm.setFields(createFields());
+  };
 
   const render = () => {};
 
