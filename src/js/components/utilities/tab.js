@@ -8,8 +8,16 @@ export const Tab = (props = {}) => {
     const element = _baseProps.element || 'a';
     const className = _baseProps.className || 'tab';
     const href = `#${id}`;
+    const onclick = e => {
+      e.target.scrollIntoView(false);
+    };
 
-    _base.setProps({href, element, className});
+    _base.setProps({
+      href,
+      element,
+      className,
+      onclick,
+    });
   };
 
   /**

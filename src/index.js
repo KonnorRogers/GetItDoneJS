@@ -21,6 +21,7 @@ container.appendChild(board.render());
 
 document.body.appendChild(frag);
 
+// Sets default target and target on hash change
 Target().handleTargets();
 
 // State stuff, get rid of this

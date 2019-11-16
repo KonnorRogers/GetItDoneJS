@@ -6,10 +6,10 @@ export const Target = () => {
     DomManipulator.setTarget(tabs, tabs[0]);
 
     window.addEventListener('hashchange', e => {
-      // Prevent scrolling
-      e.target.scrollTo(0, 0);
-
+      scrollTo(0, 0);
       DomManipulator.setTarget(tabs, tabs[1]);
+
+      return false;
     });
   };
 
