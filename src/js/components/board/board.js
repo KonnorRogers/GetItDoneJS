@@ -104,19 +104,22 @@ export const Board = (props = {}) => {
     const tabElement = board.querySelector('#tabs');
 
     _base.dom().targetObserver(tabElement, () => {
-      const element = board.querySelector('.show');
+      // const element = board.querySelector('.tab.show');
       const targetElement = board.querySelector('.target');
 
-      if (element) {
-        _base.dom().hideElement(element);
-      }
+      // if (element) {
+      //   _base.dom().hideElement(element);
+      // }
+
+      const projectList = board.querySelector('#project-list');
+      const taskList = board.querySelector('#task-list');
 
       if (targetElement.id === 'tasks') {
-        const taskList = board.querySelector('#task-list');
         _base.dom().showElement(taskList);
+        _base.dom().hideElement(projectList);
       } else if (targetElement.id === 'projects') {
-        const projectList = board.querySelector('#project-list');
         _base.dom().showElement(projectList);
+        _base.dom().hideElement(taskList);
       }
     });
   };

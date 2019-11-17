@@ -21,6 +21,10 @@ body {
   color: $gray-700;
 }
 
+textarea {
+  resize: none;
+}
+
 #container {
   margin: 0 auto;
   padding-top: 2rem;
@@ -32,8 +36,10 @@ body {
 
 #tabs {
   position: sticky;
-  top: 1rem;
-  z-index: 10;
+  top: 0;
+  z-index: 20;
+  background: $gray-200;
+  width: 100vw;
 }
 
 #board {
@@ -90,6 +96,50 @@ body {
   margin-top: 1.5rem;
   width: 95%;
   position: relative;
+}
+
+// Forms
+
+.item-form.show {
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+
+  z-index: 10;
+  flex: 1;
+}
+
+.item-form-field {
+  width: 90vw;
+  max-width: 540px;
+  margin: 1vh auto;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  &:focus {
+    border: 1px solid $primary-300;
+  }
+}
+
+.item-form-submit {
+  border: none;
+  font-size: 1.25rem;
+  padding: 0.5rem 0.75rem;
+  background: $primary-500;
+  opacity: 0.9;
+  color: $gray-100;
+  border-radius: 8px;
+  width: 75%;
+  max-width: 320px;
+  margin: 2vh auto;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 @include sm-screen {

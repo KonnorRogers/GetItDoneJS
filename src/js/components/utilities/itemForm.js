@@ -4,7 +4,11 @@ import {addToArray} from '../../utils/arrayUtils.js';
 export const ItemForm = (props = {}, fields = []) => {
   const _base = Base(props);
   const _baseProps = _base.getProps();
-  const _fields = fields;
+  let _fields = fields;
+
+  const getBase = () => {
+    return _base;
+  };
 
   const getFields = () => _fields;
 
@@ -27,10 +31,11 @@ export const ItemForm = (props = {}, fields = []) => {
     setFields(ary);
   };
 
-  const renderField = props => {
-    const type = props.element || 'input';
-    props.className = 'add-item-field';
-    const element = _base.dom().createElement(type, props);
+  const renderField = obj => {
+    const tag = obj.tag || 'input';
+    obj.className = 'item-form-field';
+    obj.placeholder = obj.name;
+    const element = _base.dom().createElement(tag, obj);
 
     return element;
   };
@@ -42,8 +47,10 @@ export const ItemForm = (props = {}, fields = []) => {
   };
   const renderDescription = () => {
     const name = 'description';
+    const tag = 'textarea';
+    const rows = '8';
 
-    return renderField({name});
+    return renderField({name, tag, rows});
   };
   const renderFinished = () => {
     const name = 'finished';
@@ -76,19 +83,41 @@ export const ItemForm = (props = {}, fields = []) => {
     return renderField({name});
   };
 
+  const renderButton = () => {
+    const innerText = 'Add project';
+    const className = 'add-project-btn hide';
+
+    const element = _base.dom().createElement('button', {innerText, className});
+
+    const formId = _baseProps.id;
+
+    _base
+      .dom()
+      .addInputListener(element, () =>
+        document.querySelector(`#${formId}`).classList.add('show'),
+      );
+
+    return element;
+  };
+
+  setDefaultFields();
+
   const render = () => {
     const type = _baseProps.element || 'form';
-    const element = _base.dom().createElement(type, _baseProps);
+    _base.setProps({onsubmit: e => console.log(e)});
+    // _base.setProps({className: 'item-form hide'});
+    const element = new DocumentFragment();
 
-    setDefaultFields();
+    const form = _base.dom().createElement(type, _baseProps);
 
-    console.log(_fields);
-    console.log(element);
-    _base.dom().appendChildrenTo(element)(_fields);
+    _base.dom().appendChildrenTo(form)(_fields);
+    _base.dom().appendChildrenTo(element)(renderButton(), form);
     return element;
   };
 
   return {
+    setFields,
+    getBase,
     render,
   };
 };

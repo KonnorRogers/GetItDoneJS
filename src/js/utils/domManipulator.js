@@ -70,6 +70,16 @@ export default (function DomManipulator() {
     element.classList.remove('hide');
   };
 
+  const addInputListener = (element, callbackFn) => {
+    element.addEventListener('click', e => callbackFn(e));
+    element.addEventListener('keydown', e => {
+      // If a user hits enter
+      if (e.keycode === 13) {
+        callbackFn(e);
+      }
+    });
+  };
+
   return {
     createElement,
     appendChildrenTo,
@@ -77,5 +87,6 @@ export default (function DomManipulator() {
     targetObserver,
     hideElement,
     showElement,
+    addInputListener,
   };
 })();
