@@ -1,6 +1,8 @@
 import {Base} from '../utilities/base.js';
 import {Tab} from '../utilities/tab.js';
 import BoardState from '../../lib/board.js';
+import {ProjectForm} from '../projects/projectForm.js';
+import {TaskForm} from '../tasks/taskForm.js';
 import {saveObject, loadObject} from '../../utils/storageUtil.js';
 
 export const Board = (props = {}) => {
@@ -60,13 +62,23 @@ export const Board = (props = {}) => {
   const renderTasks = () => {
     const tasks = getBoardState().getTasks();
 
-    return renderList('task', tasks);
+    const docFrag = new DocumentFragment();
+    const taskForm = TaskForm().render();
+    const list = renderList('task', tasks);
+
+    _base.dom().appendChildrenTo(docFrag)(taskForm, list);
+    return docFrag;
   };
 
   const renderProjects = () => {
     const projects = getBoardState().getProjects();
 
-    return renderList('project', projects);
+    const docFrag = new DocumentFragment();
+    const projectForm = ProjectForm().render();
+    const list = renderList('project', projects);
+
+    _base.dom().appendChildrenTo(docFrag)(projectForm, list);
+    return docFrag;
   };
 
   const render = () => {
@@ -89,12 +101,9 @@ export const Board = (props = {}) => {
 
   // Display lists
   const displayTargetList = board => {
-    // const tabElement = document.querySelector('#tabs');
     const tabElement = board.querySelector('#tabs');
 
     _base.dom().targetObserver(tabElement, () => {
-      // const element = document.querySelector('.show');
-      // const targetElement = document.querySelector('.target');
       const element = board.querySelector('.show');
       const targetElement = board.querySelector('.target');
 
@@ -103,7 +112,6 @@ export const Board = (props = {}) => {
       }
 
       if (targetElement.id === 'tasks') {
-        // const taskList = document.querySelector('#task-list');
         const taskList = board.querySelector('#task-list');
         _base.dom().showElement(taskList);
       } else if (targetElement.id === 'projects') {
