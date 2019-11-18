@@ -43,6 +43,7 @@ textarea {
 }
 
 #board {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,6 +51,7 @@ textarea {
   align-content: center;
   align-items: center;
   flex: 1 1 0%;
+  background: $gray-200;
 }
 
 .show {
@@ -101,16 +103,24 @@ textarea {
 // Forms
 
 .item-form.show {
+  position: absolute;
+  top: 5vh;
   display: flex;
   flex-direction: column;
-  height: 50vh;
 
-  z-index: 10;
+  padding: 1rem;
+  min-height: 900px;
+  height: 75vh;
+  width: 80vw;
+  box-shadow: 0px 0px 20vw hsla(0, 0, 0, 0.9);
+  background: $gray-100;
+  margin: 0 auto;
+  z-index: 25;
   flex: 1;
 }
 
 .item-form-field {
-  width: 90vw;
+  width: 90%;
   max-width: 540px;
   margin: 1vh auto;
   border: none;
