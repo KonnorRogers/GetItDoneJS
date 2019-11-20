@@ -113,6 +113,9 @@ export const Board = (props = {}) => {
 
       const projectList = board.querySelector('#project-list');
       const taskList = board.querySelector('#task-list');
+      const backgroundBtn = _base
+        .dom()
+        .createElement('btn', {className: 'item-form-background'});
 
       if (targetElement.id === 'tasks') {
         _base.dom().showElement(taskList);
@@ -121,6 +124,8 @@ export const Board = (props = {}) => {
         _base.dom().showElement(projectList);
         _base.dom().hideElement(taskList);
       }
+
+      board.appendChild(backgroundBtn);
     });
   };
 
