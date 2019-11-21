@@ -147,11 +147,20 @@ textarea {
 
 fieldset.item-form-field {
   display: flex;
+  flex-wrap: wrap;
   align-content: center;
+  align-items: center;
   justify-content: center;
   padding: 1rem;
+
+  input {
+    width: 10%;
+  }
   label {
+    text-align: left;
     padding: 0.25rem 1rem 0.25rem 0.5rem;
+    width: 90%;
+    height: 2rem;
   }
 }
 
@@ -200,6 +209,30 @@ fieldset.item-form-field {
   }
 }
 
+.add-task-btn,
+.add-project-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: $primary-500;
+  opacity: 0.8;
+  font-size: 1.25rem;
+  color: $gray-100;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  font-variant: small-caps;
+  width: 15rem;
+  height: 3rem;
+
+  &:focus,
+  &:hover {
+    outline: none;
+    background: $primary-500;
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
 @include sm-screen {
 }
 
@@ -210,6 +243,14 @@ fieldset.item-form-field {
 
   .item-list {
     width: 75%;
+  }
+
+  fieldset.item-form-field {
+    input {
+    }
+
+    label {
+    }
   }
 }
 

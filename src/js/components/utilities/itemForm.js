@@ -178,7 +178,7 @@ export const ItemForm = (props = {}) => {
   };
 
   const renderButton = () => {
-    const innerText = `Add ${_baseProps.item}`;
+    const innerText = `add ${_baseProps.item}`;
     const className = `add-${_baseProps.item}-btn hide`;
 
     const element = _base.dom().createElement('button', {innerText, className});
