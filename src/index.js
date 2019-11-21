@@ -13,7 +13,7 @@ const container = Container().render();
 const board = Board();
 const frag = new DocumentFragment();
 
-board.getBoardState().addTasks('task1');
+// board.getBoardState().addTasks('task1');
 
 frag.appendChild(container);
 

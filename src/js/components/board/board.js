@@ -63,7 +63,7 @@ export const Board = (props = {}) => {
     const tasks = getBoardState().getTasks();
 
     const docFrag = new DocumentFragment();
-    const taskForm = TaskForm().render();
+    const taskForm = TaskForm({item: 'task'}).render();
     const list = renderList('task', tasks);
 
     _base.dom().appendChildrenTo(docFrag)(taskForm, list);
@@ -74,11 +74,29 @@ export const Board = (props = {}) => {
     const projects = getBoardState().getProjects();
 
     const docFrag = new DocumentFragment();
-    const projectForm = ProjectForm().render();
+    const projectForm = ProjectForm({item: 'project'}).render();
     const list = renderList('project', projects);
 
     _base.dom().appendChildrenTo(docFrag)(projectForm, list);
     return docFrag;
+  };
+
+  const renderFormBackground = () => {
+    const props = {
+      element: 'button',
+      className: 'item-form-background hide',
+      tabIndex: -1,
+      onclick: () => {
+        const form = document.querySelector('.item-form.show');
+        _base.dom().hideElement(form);
+
+        const btn = document.querySelector('.item-form-background');
+        _base.dom().hideElement(btn);
+      },
+    };
+    const btn = _base.dom().createElement(props.element, props);
+
+    return btn;
   };
 
   const render = () => {
@@ -91,6 +109,7 @@ export const Board = (props = {}) => {
 
     _base.dom().appendChildrenTo(board)(
       renderTabs(),
+      renderFormBackground(),
       renderProjects(),
       renderTasks(),
     );
@@ -104,28 +123,25 @@ export const Board = (props = {}) => {
     const tabElement = board.querySelector('#tabs');
 
     _base.dom().targetObserver(tabElement, () => {
-      // const element = board.querySelector('.tab.show');
       const targetElement = board.querySelector('.target');
-
-      // if (element) {
-      //   _base.dom().hideElement(element);
-      // }
 
       const projectList = board.querySelector('#project-list');
       const taskList = board.querySelector('#task-list');
-      const backgroundBtn = _base
-        .dom()
-        .createElement('btn', {className: 'item-form-background'});
+
+      const projectBtn = board.querySelector('.add-project-btn');
+      const taskBtn = board.querySelector('.add-task-btn');
 
       if (targetElement.id === 'tasks') {
         _base.dom().showElement(taskList);
+        _base.dom().showElement(taskBtn);
         _base.dom().hideElement(projectList);
+        _base.dom().hideElement(projectBtn);
       } else if (targetElement.id === 'projects') {
         _base.dom().showElement(projectList);
+        _base.dom().showElement(projectBtn);
         _base.dom().hideElement(taskList);
+        _base.dom().hideElement(taskBtn);
       }
-
-      board.appendChild(backgroundBtn);
     });
   };
 

@@ -1,7 +1,7 @@
 import {ItemForm} from '../utilities/itemForm.js';
 
 export const ProjectForm = (props = {}) => {
-  props.className = props.className || 'item-form show';
+  props.className = props.className || 'item-form hide';
   props.id = props.id || 'project-form';
 
   const _itemForm = ItemForm(props);

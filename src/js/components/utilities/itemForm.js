@@ -1,10 +1,11 @@
 import {Base} from './base.js';
 import {addToArray} from '../../utils/arrayUtils.js';
+import {capitalizeString} from '../../utils/stringUtils.js';
 
-export const ItemForm = (props = {}, fields = []) => {
+export const ItemForm = (props = {}) => {
   const _base = Base(props);
   const _baseProps = _base.getProps();
-  let _fields = fields;
+  let _fields = [];
 
   const getBase = () => {
     return _base;
@@ -25,77 +26,172 @@ export const ItemForm = (props = {}, fields = []) => {
       renderNotes(),
       renderStartDate(),
       renderEndDate(),
-      renderFinished(),
+      // renderFinished(),
     ];
 
     setFields(ary);
   };
 
-  const renderField = obj => {
-    const tag = obj.tag || 'input';
+  /**
+   * Renders a given field. Base function for rendering other fields
+   * @param {Object} obj - Pass in an object with properties, name required.
+   * @return {HTMLElement} - Returns an html element
+   */
+  const renderFormField = (obj = {}) => {
+    const tag = obj.tag || 'div';
     obj.className = 'item-form-field';
-    obj.placeholder = obj.name;
+
+    const element = _base.dom().createElement(tag, obj);
+
+    return element;
+  };
+
+  const renderInputField = obj => {
+    const name = obj.name;
+    const tag = obj.tag || 'input';
+
+    obj.className = obj.className || 'item-form-input';
+    obj.placeholder = capitalizeString(name);
+
     const element = _base.dom().createElement(tag, obj);
 
     return element;
   };
 
   const renderTitle = () => {
-    const name = 'title';
+    const formField = renderFormField();
 
-    return renderField({name});
+    const name = 'title';
+    const title = renderInputField({name});
+
+    formField.appendChild(title);
+    return formField;
   };
   const renderDescription = () => {
+    const formField = renderFormField();
+
     const name = 'description';
     const tag = 'textarea';
-    const rows = '8';
+    const rows = '4';
 
-    return renderField({name, tag, rows});
+    const desc = renderInputField({name, tag, rows});
+
+    formField.appendChild(desc);
+    return formField;
   };
+
   const renderFinished = () => {
-    const name = 'finished';
-
-    return renderField({name});
+    // const name = 'finished';
+    // const type = 'radio';
+    // const props = {
+    //   type: 'radio',
+    //   name: 'finished',
+    //   innerText: 'Mark as completed',
+    // };
+    // return renderField(props);
+    // const docFrag = new DocumentFragment();
+    // const fieldset = _base.dom().createElement('fieldset');
+    // const legend = _base.dom().createElement('legend', {innerText: ''});
+    // const label = _base.dom().createElement('label', {innerText: });
   };
+
+  const renderRadioBtn = props => {
+    props.tag = 'input';
+    props.type = 'radio';
+
+    const radiobtn = _base.dom().createElement(props.tag, props);
+
+    return radiobtn;
+  };
+
+  const renderRadioBtnLabel = props => {
+    props.tag = 'label';
+
+    const label = _base.dom().createElement(props.tag, props);
+    return label;
+  };
+
   const renderPriority = () => {
     const name = 'priority';
 
-    return renderField({name});
-  };
-  const renderLabels = () => {
-    const name = 'labels';
+    const docFrag = new DocumentFragment();
+    const fieldset = renderFormField({tag: 'fieldset', name});
 
-    return renderField({name});
+    const props = {
+      name: 'priority',
+      for: 'priority',
+    };
+
+    const btnsLength = 4;
+    for (let i = 1; i <= btnsLength; i++) {
+      const radio = renderRadioBtn(Object.assign({value: i}, props));
+      const label = renderRadioBtnLabel(
+        Object.assign({innerText: `Priority ${i}`, id: `priority-${i}`}, props),
+      );
+
+      if (i === 1) {
+        radio.checked = true;
+      }
+      _base.dom().appendChildrenTo(fieldset)(radio, label);
+    }
+
+    docFrag.appendChild(fieldset);
+
+    return docFrag;
+  };
+
+  const renderLabels = () => {
+    const formField = renderFormField();
+
+    const name = 'labels';
+    const input = renderInputField({name});
+
+    formField.appendChild(input);
+    return formField;
   };
   const renderNotes = () => {
-    const name = 'notes';
+    const formField = renderFormField();
 
-    return renderField({name});
+    const name = 'notes';
+    const input = renderInputField({name});
+
+    formField.appendChild(input);
+    return formField;
   };
   const renderStartDate = () => {
-    const name = 'start-date';
+    const formField = renderFormField();
 
-    return renderField({name});
+    const name = 'start-date';
+    const input = renderInputField({name});
+
+    formField.appendChild(input);
+    return formField;
   };
   const renderEndDate = () => {
-    const name = 'end-date';
+    const formField = renderFormField();
 
-    return renderField({name});
+    const name = 'end-date';
+    const input = renderInputField({name});
+
+    formField.appendChild(input);
+    return formField;
   };
 
   const renderButton = () => {
-    const innerText = 'Add project';
-    const className = 'add-project-btn hide';
+    const innerText = `Add ${_baseProps.item}`;
+    const className = `add-${_baseProps.item}-btn hide`;
 
     const element = _base.dom().createElement('button', {innerText, className});
 
     const formId = _baseProps.id;
 
-    _base
-      .dom()
-      .addInputListener(element, () =>
-        document.querySelector(`#${formId}`).classList.add('show'),
-      );
+    _base.dom().addInputListener(element, () => {
+      const form = document.querySelector(`#${formId}`);
+      const background = document.querySelector('.item-form-background');
+
+      _base.dom().showElement(form);
+      _base.dom().showElement(background);
+    });
 
     return element;
   };
@@ -104,7 +200,12 @@ export const ItemForm = (props = {}, fields = []) => {
 
   const render = () => {
     const type = _baseProps.element || 'form';
-    _base.setProps({onsubmit: e => console.log(e)});
+    _base.setProps({
+      onsubmit: e => {
+        e.preventDefault();
+        // console.log(e);
+      },
+    });
     // _base.setProps({className: 'item-form hide'});
     const element = new DocumentFragment();
 

@@ -101,7 +101,6 @@ textarea {
 }
 
 // Forms
-
 .item-form.show {
   position: absolute;
   top: 5vh;
@@ -110,9 +109,8 @@ textarea {
 
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  padding: 1rem;
-  min-height: 900px;
-  height: 75vh;
+  padding: 3rem 1rem;
+  min-height: 700px;
   width: 80vw;
   background: $gray-100;
   margin: 0 auto;
@@ -142,12 +140,41 @@ textarea {
   max-width: 540px;
   margin: 1vh auto;
   border: none;
-  border-radius: 4px;
-  padding: 0.75rem;
-
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  min-height: 2rem;
+  color: $gray-700;
+}
 
+fieldset.item-form-field {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding: 1rem;
+  label {
+    padding: 0.25rem 1rem 0.25rem 0.5rem;
+  }
+}
+
+#priority-1 {
+  color: red;
+}
+#priority-2 {
+  color: blue;
+}
+#priority-3 {
+  color: green;
+}
+#priority-4 {
+  color: black;
+}
+
+.item-form-input {
+  width: 100%;
+  height: 100%;
+  padding: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   border: 1px solid $gray-100;
+  border-radius: 4px;
 
   &:focus {
     border: 1px solid $primary-300;
@@ -157,7 +184,7 @@ textarea {
 .item-form-submit {
   border: none;
   font-size: 1.25rem;
-  padding: 0.5rem 0.75rem;
+  padding: 0.75rem;
   background: $primary-500;
   opacity: 0.9;
   color: $gray-100;

@@ -48,7 +48,7 @@ export default (function DomManipulator() {
 
     // Callback function to execute when mutations are observed
     const mutationCallback = function(mutationsList, _observer) {
-      for (let mutation of mutationsList) {
+      for (let _mutation of mutationsList) {
         callback();
       }
     };
