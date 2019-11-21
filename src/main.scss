@@ -231,6 +231,7 @@ fieldset.item-form-field {
   font-variant: small-caps;
   width: 15rem;
   height: 3rem;
+  border-radius: 8px;
 
   &:focus,
   &:hover {
@@ -251,14 +252,6 @@ fieldset.item-form-field {
 
   .item-list {
     width: 75%;
-  }
-
-  fieldset.item-form-field {
-    input {
-    }
-
-    label {
-    }
   }
 }
 
