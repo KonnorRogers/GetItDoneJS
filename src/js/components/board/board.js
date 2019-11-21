@@ -96,6 +96,11 @@ export const Board = (props = {}) => {
     };
     const btn = _base.dom().createElement(props.element, props);
 
+    _base.dom().escKeyListener(document, () => {
+      const form = document.querySelector('.item-form.show');
+      _base.dom().hideElement(form);
+      _base.dom().hideElement(btn);
+    });
     return btn;
   };
 
@@ -131,16 +136,15 @@ export const Board = (props = {}) => {
       const projectBtn = board.querySelector('.add-project-btn');
       const taskBtn = board.querySelector('.add-task-btn');
 
+      const tasks = [taskBtn, taskList];
+      const projects = [projectBtn, projectList];
+
       if (targetElement.id === 'tasks') {
-        _base.dom().showElement(taskList);
-        _base.dom().showElement(taskBtn);
-        _base.dom().hideElement(projectList);
-        _base.dom().hideElement(projectBtn);
+        tasks.forEach(e => _base.dom().showElement(e));
+        projects.forEach(e => _base.dom().hideElement(e));
       } else if (targetElement.id === 'projects') {
-        _base.dom().showElement(projectList);
-        _base.dom().showElement(projectBtn);
-        _base.dom().hideElement(taskList);
-        _base.dom().hideElement(taskBtn);
+        projects.forEach(e => _base.dom().showElement(e));
+        tasks.forEach(e => _base.dom().hideElement(e));
       }
     });
   };

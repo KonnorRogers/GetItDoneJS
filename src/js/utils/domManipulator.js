@@ -74,8 +74,16 @@ export default (function DomManipulator() {
     element.addEventListener('click', e => callbackFn(e));
     element.addEventListener('keydown', e => {
       // If a user hits enter
-      if (e.keycode === 13) {
+      if (e.key === 'Enter') {
         callbackFn(e);
+      }
+    });
+  };
+
+  const escKeyListener = (element, callbackFn) => {
+    element.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        callbackFn();
       }
     });
   };
@@ -88,5 +96,6 @@ export default (function DomManipulator() {
     hideElement,
     showElement,
     addInputListener,
+    escKeyListener,
   };
 })();
