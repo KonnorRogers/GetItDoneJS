@@ -1,2 +1,7 @@
 /node_modules/
 dist/
+doc
+yarn-error*
+coverage/
+tags
+.git

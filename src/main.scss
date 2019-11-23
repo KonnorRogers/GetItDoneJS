@@ -1,1 +1,275 @@
-@import 'scss/test.scss';
+@import 'scss/screen';
+@import 'scss/palette';
+
+// Defaults
+
+*,
+*:before,
+*:after {
+  font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+body {
+  color: $gray-700;
+}
+
+textarea {
+  resize: none;
+  border-bottom: none;
+}
+
+#container {
+  margin: 0 auto;
+  padding-top: 2rem;
+  text-align: center;
+  position: relative;
+  min-height: 95vh;
+  background: $gray-200;
+}
+
+#tabs {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: $gray-200;
+  width: 100vw;
+}
+
+#board {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  flex: 1 1 0%;
+  background: $gray-200;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.tab {
+  display: inline-block;
+  border: none;
+  color: $gray-500;
+  padding: 0.5rem 0.8rem;
+  margin: 0.5rem 0.8rem;
+  font-size: 1.25rem;
+  letter-spacing: 0.07rem;
+
+  &:hover,
+  &:focus {
+    color: $gray-800;
+    border-radius: 4px;
+    background: $gray-300;
+  }
+}
+
+// Shows which tab is currently being displayed
+.tab.target {
+  color: $gray-700;
+  border-bottom: 2px solid $primary-300;
+}
+
+.item-list {
+  min-height: 60vh;
+  min-height: 200vh;
+  box-shadow: 0 10px 15px -3px hsla(0, 0, 0, 0.2),
+    0 4px 6px -2px hsla(0, 0, 0, 0.05);
+  border-radius: 8px;
+  background: $gray-100;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  text-align: left;
+  margin-top: 1.5rem;
+  width: 95%;
+  position: relative;
+}
+
+// Forms
+.item-form.show {
+  position: absolute;
+  top: 5vh;
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: 3rem 1rem;
+  min-height: 700px;
+  width: 80vw;
+  background: $gray-100;
+  margin: 0 auto;
+  z-index: 25;
+  flex: 1;
+  border-radius: 8px;
+}
+
+.item-form-background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  background: black;
+  opacity: 0.35;
+  box-shadow: inset 2px 4px 0 hsla(0, 0, 0, 0.06);
+  z-index: 20;
+}
+
+.item-form-field {
+  width: 90%;
+  max-width: 540px;
+  margin: 1vh auto;
+  border: none;
+  border-radius: 8px;
+  min-height: 2rem;
+  color: $gray-700;
+  border-bottom: none;
+}
+
+fieldset.item-form-field {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 1rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
+  .radio-btn {
+    text-align: center;
+    padding: 0.5rem;
+    width: 100%;
+  }
+  input[type='radio'] {
+    margin: -1px;
+    vertical-align: middle;
+  }
+  label {
+    padding: 0.25rem 1rem 0.25rem 0.5rem;
+    height: 2rem;
+  }
+}
+
+#priority-1,
+#priority-2,
+#priority-3,
+#priority-4 {
+  font-weight: 600;
+  font-variant: small-caps;
+}
+
+#priority-1 {
+  color: red;
+}
+#priority-2 {
+  color: blue;
+}
+#priority-3 {
+  color: green;
+}
+#priority-4 {
+  color: black;
+}
+
+.item-form-input {
+  width: 100%;
+  height: 100%;
+  padding: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border: 1px solid $gray-100;
+  border-radius: 8px;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    border: 1px solid $primary-300;
+    outline: none;
+  }
+}
+
+.item-form-submit {
+  border: none;
+  font-size: 1.25rem;
+  padding: 0.75rem;
+  background: $primary-500;
+  opacity: 0.9;
+  color: $gray-100;
+  border-radius: 8px;
+  width: 75%;
+  max-width: 320px;
+  margin: 2vh auto;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.add-task-btn,
+.add-project-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: $primary-500;
+  opacity: 0.8;
+  font-size: 1.25rem;
+  color: $gray-100;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  font-variant: small-caps;
+  width: 15rem;
+  height: 3rem;
+  border-radius: 8px;
+
+  &:focus,
+  &:hover {
+    outline: none;
+    background: $primary-500;
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+@include sm-screen {
+}
+
+@include md-screen {
+  #tabs {
+    margin-top: 4rem;
+  }
+
+  .item-list {
+    width: 75%;
+  }
+}
+
+@include lg-screen {
+  .item-list {
+    width: 66%;
+  }
+}

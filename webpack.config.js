@@ -1,9 +1,14 @@
 // webpack.config.js
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 module.exports = {
   entry: './src/index.js',
+  watchOptions: {
+    ignored: /(node_modules)/,
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -13,7 +18,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.s[ac]ss$/i,
+        // less verbose way of saying .sass / .css / .scss
+        // test: /\.s?(c|a)ss/i,
+
+        // more verbose
+        test: /\.(scss|sass|css)/i,
         use: [
           // Use minicssextract instead of style loader
           {
@@ -24,15 +33,22 @@ module.exports = {
           },
           // Translates CSS into CommonJS
           'css-loader',
+
           // Compiles Sass to CSS
-          'sass-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              // Prefer `dart-sass`
+              implementation: require('dart-sass'),
+            },
+          },
         ],
       },
 
       // ES5 transpiling
       {
         test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -44,6 +60,8 @@ module.exports = {
   },
 
   plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({template: './src/index.html'}),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // all options are optional
