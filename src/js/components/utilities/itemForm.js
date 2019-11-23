@@ -124,15 +124,20 @@ export const ItemForm = (props = {}) => {
 
     const btnsLength = 4;
     for (let i = 1; i <= btnsLength; i++) {
-      const radio = renderRadioBtn(Object.assign({value: i}, props));
+      const id = `priority-${i}`;
+
+      const div = _base.dom().createElement('div', {className: 'radio-btn'});
+      const radio = renderRadioBtn(Object.assign({value: i, id: id}, props));
       const label = renderRadioBtnLabel(
-        Object.assign({innerText: `Priority ${i}`, id: `priority-${i}`}, props),
+        Object.assign({innerText: `Priority ${i}`, id: id}, props),
       );
 
       if (i === 1) {
         radio.checked = true;
       }
-      _base.dom().appendChildrenTo(fieldset)(radio, label);
+
+      _base.dom().appendChildrenTo(div)(radio, label);
+      _base.dom().appendChildrenTo(fieldset)(div);
     }
 
     docFrag.appendChild(fieldset);
