@@ -5,6 +5,7 @@ import {capitalizeString} from '../../utils/stringUtils.js';
 export const ItemForm = (props = {}) => {
   const _base = Base(props);
   const _baseProps = _base.getProps();
+
   let _fields = [];
 
   const getBase = () => {
@@ -46,6 +47,18 @@ export const ItemForm = (props = {}) => {
     return element;
   };
 
+  // const renderInputField = obj => {
+  //   const name = obj.name;
+  //   const tag = obj.tag || 'input';
+
+  //   obj.className = obj.className || 'item-form-input';
+  //   obj.placeholder = capitalizeString(name);
+
+  //   const element = _base.dom().createElement(tag, obj);
+
+  //   return element;
+  // };
+
   const renderInputField = obj => {
     const name = obj.name;
     const tag = obj.tag || 'input';
@@ -53,9 +66,12 @@ export const ItemForm = (props = {}) => {
     obj.className = obj.className || 'item-form-input';
     obj.placeholder = capitalizeString(name);
 
-    const element = _base.dom().createElement(tag, obj);
+    const docFrag = new DocumentFragment();
+    const input = _base.dom().createElement(tag, obj);
+    const label = _base.dom().createElement('label', {for: obj.name});
 
-    return element;
+    _base.dom().appendChildrenTo(docFrag)(label, input);
+    return docFrag;
   };
 
   const renderTitle = () => {
@@ -80,20 +96,20 @@ export const ItemForm = (props = {}) => {
     return formField;
   };
 
-  const renderFinished = () => {
-    // const name = 'finished';
-    // const type = 'radio';
-    // const props = {
-    //   type: 'radio',
-    //   name: 'finished',
-    //   innerText: 'Mark as completed',
-    // };
-    // return renderField(props);
-    // const docFrag = new DocumentFragment();
-    // const fieldset = _base.dom().createElement('fieldset');
-    // const legend = _base.dom().createElement('legend', {innerText: ''});
-    // const label = _base.dom().createElement('label', {innerText: });
-  };
+  // const renderFinished = () => {
+  // const name = 'finished';
+  // const type = 'radio';
+  // const props = {
+  //   type: 'radio',
+  //   name: 'finished',
+  //   innerText: 'Mark as completed',
+  // };
+  // return renderField(props);
+  // const docFrag = new DocumentFragment();
+  // const fieldset = _base.dom().createElement('fieldset');
+  // const legend = _base.dom().createElement('legend', {innerText: ''});
+  // const label = _base.dom().createElement('label', {innerText: });
+  // };
 
   const renderRadioBtn = props => {
     props.tag = 'input';
@@ -211,7 +227,7 @@ export const ItemForm = (props = {}) => {
         // console.log(e);
       },
     });
-    // _base.setProps({className: 'item-form hide'});
+
     const element = new DocumentFragment();
 
     const form = _base.dom().createElement(type, _baseProps);
@@ -225,5 +241,6 @@ export const ItemForm = (props = {}) => {
     setFields,
     getBase,
     render,
+    getFields,
   };
 };
